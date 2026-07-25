@@ -2,17 +2,18 @@
 name: groundledger
 description: >-
   Orchestrator for Groundledger: CLEAR blogging, SPARK editorial, SNAP social,
-  ORBIT discovery, PROBE site SEO, SAFE paid media, Studio Desk ops, and Cue
-  Deck prompts. Enforces grounding (no fabricated stats) and observe-only ads
-  by default. Use for Claude Code, Cursor, or Cowork when the user mentions
-  groundledger, SEO audit, paid media, content suite, or is unsure which skill.
+  ORBIT discovery, PROBE site SEO, SAFE paid media, Studio Desk ops, Cue Deck
+  prompts, and Signal Over Noise OS full-article pipeline. Enforces grounding
+  (no fabricated stats) and observe-only ads by default. Use for Claude Code,
+  Cursor, or Cowork when the user mentions groundledger, SEO audit, paid media,
+  content suite, flagship article, or is unsure which skill.
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
 
 # Groundledger Orchestrator
 
-Route across eight skills. Obey Grounding Law before any “final” delivery.
+Route across nine skills. Obey Grounding Law before any “final” delivery.
 
 **Grounding (mandatory):** load
 `../blog-engine/references/grounding.md` — never invent statistics, studies,
@@ -20,6 +21,7 @@ quotes, rankings, ROAS, or customer results.
 
 | Need | Load |
 |------|------|
+| Full article pipeline, tech/code review, critique, retro | `../signal-os/SKILL.md` |
 | Long-form, page SEO scan, citation, clusters, locales, release | `../blog-engine/SKILL.md` |
 | Multi-pass polish, tone retarget, voice canon | `../editorial-pass/SKILL.md` |
 | Hooks, posts, atomize, calendars, social analytics | `../social-cast/SKILL.md` |
@@ -31,7 +33,7 @@ quotes, rankings, ROAS, or customer results.
 
 ## Routing
 
-1. Outcome first: strategy → `orbit-discovery`; article → `blog-engine`; site audit → `site-signal`; paid → `paid-cast`; polish → `editorial-pass`; social → `social-cast`; ops → `studio-desk`; prompts → `cue-deck`
+1. Outcome first: full pipeline / flagship article → `signal-os`; strategy → `orbit-discovery`; article → `blog-engine`; site audit → `site-signal`; paid → `paid-cast`; polish → `editorial-pass`; social → `social-cast`; ops → `studio-desk`; prompts → `cue-deck`
 2. Compose (content): `orbit-discovery` → `blog-engine` → `editorial-pass` → `social-cast` `atomize` → `studio-desk` `ship`
 3. Compose (acquisition): `site-signal` / `orbit-discovery` → `paid-cast` `audit` → latch-gated `optimize-draft` only if approved
 4. Social packs change shape; never paste blog paragraphs

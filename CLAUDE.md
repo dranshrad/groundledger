@@ -20,6 +20,7 @@ This repository is the **Groundledger** skill suite for grounded content work on
 | Directory | Framework |
 |-----------|-----------|
 | `skills/groundledger/` | Router |
+| `skills/signal-os/` | 6-pass editorial pipeline (conductor) |
 | `skills/blog-engine/` | CLEAR |
 | `skills/editorial-pass/` | SPARK |
 | `skills/social-cast/` | SNAP + PULSE |
@@ -48,5 +49,6 @@ This repository is the **Groundledger** skill suite for grounded content work on
 ## Composition defaults
 
 Content: `orbit-discovery` → `blog-engine` → `editorial-pass` → `social-cast` → `studio-desk` ship  
+Flagship article (full pipeline): `signal-os` conducts Discover → Brief → Draft → Review → Polish → Ship  
 SEO: `site-signal` → handoff to `blog-engine` / `orbit-discovery`  
 Paid: `paid-cast` observe-only; mutations only with approved MutationLatch  
