@@ -21,6 +21,7 @@ Content and acquisition work should (1) help a reader finish a job, (2) be extra
 | Skill | Framework | Use for |
 |-------|-----------|---------|
 | [groundledger](skills/groundledger/) | Router | Pick / compose skills |
+| [signal-os](skills/signal-os/) | Conductor | 6-pass flagship article pipeline |
 | [blog-engine](skills/blog-engine/) | **CLEAR** | Articles, claim ledgers, Ship Scan, Cite Surface |
 | [editorial-pass](skills/editorial-pass/) | **SPARK** | Multi-pass polish, Tone Retarget, Voice Canon |
 | [social-cast](skills/social-cast/) | **SNAP + PULSE** | Hooks, posts, atomize, calendars, analytics |
@@ -32,36 +33,24 @@ Content and acquisition work should (1) help a reader finish a job, (2) be extra
 
 ## Install
 
-### Claude Code
-
 ```bash
 git clone https://github.com/dranshrad/groundledger.git
-mkdir -p ~/.claude/skills
-cp -R groundledger/skills/* ~/.claude/skills/
+cd groundledger
+bash scripts/install.sh --link              # live sync → Claude + Cursor
+bash scripts/setup-auto-sync.sh --launchd   # git hooks + daily macOS sync
 ```
 
-Plugin-style (from repo root, Claude Code):
+`--link` symlinks each Groundledger skill into `~/.claude/skills/` and
+`~/.cursor/skills/` (other skills in those dirs are untouched). See
+[INSTALL.md](INSTALL.md) for copy mode, Claude CLI plugin update, and Cowork
+zips (CI publishes [`cowork-skills-latest`](https://github.com/dranshrad/groundledger/releases/tag/cowork-skills-latest)).
+
+Plugin-style (Claude Code / CLI):
 
 ```text
 /plugin marketplace add dranshrad/groundledger
 /plugin install groundledger@groundledger-marketplace
 ```
-
-Or: `claude plugin install .` when this directory is the working tree (if your Claude Code build supports local plugin install).
-
-### Cursor
-
-```bash
-git clone https://github.com/dranshrad/groundledger.git
-mkdir -p ~/.cursor/skills
-cp -R groundledger/skills/* ~/.cursor/skills/
-```
-
-### Cowork / skill zip upload
-
-Zip each folder under `skills/<name>/` (must contain `SKILL.md`) and upload via **Cowork → Customize → Skills**. Upload all nine for the full suite, or start with `groundledger` + `blog-engine`.
-
-Project-local (either client): copy into `.claude/skills/` and/or `.cursor/skills/`.
 
 Details: [INSTALL.md](INSTALL.md) · [CLAUDE.md](CLAUDE.md) · [docs/getting-started.md](docs/getting-started.md).
 
