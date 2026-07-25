@@ -24,7 +24,7 @@ claim ledger or user-supplied data ([Grounding Law](../blog-engine/references/gr
 | `hook` | SNAP hook variants |
 | `post` | Single platform-native post |
 | `thread` | Narrative arc |
-| `carousel` | Slide script |
+| `carousel` | **Carousel Engine** — 4:5 Instagram slide script + optional HTML/PNG export ([references/carousel-engine.md](references/carousel-engine.md)) |
 | `caption` | Visual-first caption + on-screen cues |
 | `atomize` | Long-form → cast pack |
 | `calendar` | PULSE week/month |
@@ -56,6 +56,17 @@ Rank platforms by audience fit + format strength + capacity. Kill low-ROI surfac
 | **P** | Promise of structure | Must deliver |
 
 Secondary: Question, Bold claim. Never invent stats.
+
+## Carousel Engine (`carousel`)
+
+Default load: [references/carousel-engine.md](references/carousel-engine.md).
+
+1. Brand from `CAST.md` / `BRAND.md` (ask only gaps) → palette from one hex  
+2. 5–10 slides (default 7): Hook → Tension → Answer → Payoff → Depth → Method → Ask  
+3. Emit slide script + caption + claims table; optional HTML preview / 1080×1350 export  
+4. Edit one slide at a time — never full-regen for a one-line change  
+
+Slide 1 uses a SNAP hook. Stats on any slide need ledger or author supply.
 
 ## Atomize
 

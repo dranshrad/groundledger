@@ -20,6 +20,8 @@
 - Caption supports the visual
 - First line = hook in grid preview
 - Clear CTA in bio/link strategy, not link spam mid-caption unless allowed
+- Carousels: 4:5 (1080×1350); use `carousel` mode + [carousel-engine.md](carousel-engine.md)
+- Swipe rhythm (light/dark), progress bar, and a CTA-only last slide beat paste-as-slides
 
 ## TikTok / Shorts / Reels
 - 1s–3s pattern interrupt
