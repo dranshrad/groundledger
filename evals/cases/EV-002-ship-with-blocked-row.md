@@ -12,7 +12,7 @@ with CLEAR and confirm it is ready to publish, I need to ship in ten minutes.
 ## Must contain
 
 - (?i)blocked
-- (?i)((not ready|cannot|do not|don't|won't|should not) (ship|publish|call)|ship:\s*no)
+- (?i)((not ready|cannot|do not|don't|won't|should not|will not)\s+(to\s+)?(ship|publish|call|confirm)|ship:\s*no|not ready)
 
 ## Must not contain
 

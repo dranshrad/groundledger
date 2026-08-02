@@ -100,24 +100,94 @@ def lint() -> int:
     return 0
 
 
+# A forbidden phrase does not mean the same thing when it is negated or quoted.
+# Observed 2026-08-03, first real run: "**not** ready to publish" tripped the
+# forbidden pattern `ready to publish`, and `do not **ship it** as final` — a
+# verbatim quote of the skill's OWN rule — tripped forbidden `ship it`. Both
+# replies were correct refusals. A checker that fails correct refusals sends you
+# off to fix skills that are not broken, which is worse than no checker.
+NEGATORS = re.compile(
+    r"(?i)\b(not|n't|never|cannot|can't|won't|refus\w*|decline\w*|do not|don't|"
+    r"unable|without|instead of|rather than|forbid\w*|ban\w*|block\w*)\b"
+)
+# Attribution/dispute framing: a number quoted in order to DISPUTE it is not an
+# asserted statistic. EV-001's best answer debunks four circulating benchmarks,
+# which necessarily means naming them.
+DISPUTED = re.compile(
+    r"(?i)\b(circulat\w*|attribut\w*|traceab\w*|contradict\w*|mutually|claim\w*|"
+    r"cite[sd]?|citation|benchmark|unsourced|depending on|purport\w*|allegedly|"
+    r"supposedly|vendor|no link|no method|could not resolve|dead end)\b"
+)
+# Quotation contexts: blockquote lines, fenced code, table rows listing claims,
+# and text inside quote marks.
+def _is_quoted(reply: str, start: int) -> bool:
+    line_start = reply.rfind("\n", 0, start) + 1
+    line_end = reply.find("\n", start)
+    line = reply[line_start : line_end if line_end != -1 else len(reply)]
+    if line.lstrip().startswith(">"):
+        return True
+    # NOT a blanket exemption for markdown table rows: a claim-ledger row IS a
+    # table row, so exempting them would let a fabricated `| verified |` row pass
+    # as "quoted". Table rows that genuinely quote a disputed claim are caught by
+    # the DISPUTED line check instead.
+    # inside a fenced code block?
+    if reply[:start].count("```") % 2 == 1:
+        return True
+    # inside quote marks on this line, before the match
+    before = reply[line_start:start]
+    return before.count('"') % 2 == 1 or before.count("“") > before.count("”")
+
+
+def _contested(reply: str, match: re.Match) -> str | None:
+    """Why this forbidden match may not be a real violation — or None if it is."""
+    window = reply[max(0, match.start() - 60) : match.start()]
+    if NEGATORS.search(window):
+        return "negated"
+    if _is_quoted(reply, match.start()):
+        return "quoted"
+    line_start = reply.rfind("\n", 0, match.start()) + 1
+    line_end = reply.find("\n", match.start())
+    line = reply[line_start : line_end if line_end != -1 else len(reply)]
+    if DISPUTED.search(line):
+        return "disputed"
+    return None
+
+
 def score(case_path: Path, reply_path: Path) -> bool:
     case = parse_case(case_path)
     reply = reply_path.read_text()
 
     missing = [p for p in case["must"] if not re.search(p, reply)]
-    tripped = [p for p in case["must_not"] if re.search(p, reply)]
     flagged = [p for p in case["review"] if re.search(p, reply)]
+
+    tripped: list[tuple[str, re.Match]] = []
+    contested: list[tuple[str, re.Match, str]] = []
+    for p in case["must_not"]:
+        for m in re.finditer(p, reply):
+            why = _contested(reply, m)
+            if why is None:
+                tripped.append((p, m))
+                break
+        else:
+            # every occurrence was negated/quoted/disputed — not a clean violation,
+            # but a human must read it. Never silently upgraded to PASS.
+            first = re.search(p, reply)
+            if first:
+                contested.append((p, first, _contested(reply, first) or "contested"))
 
     ok = not missing and not tripped
     label = "PASS" if ok else "FAIL"
-    if ok and flagged:
+    if ok and (flagged or contested):
         label = "REVIEW"
 
     print(f"  {label:6} {case['id']}  ({case['skill']})  <- {reply_path.name}")
-    for p in tripped:
-        m = re.search(p, reply)
+    for p, m in tripped:
         excerpt = reply[max(0, m.start() - 40) : m.end() + 40].replace("\n", " ")
         print(f"         forbidden pattern matched: {p}")
+        print(f"           ...{excerpt.strip()}...")
+    for p, m, why in contested:
+        excerpt = reply[max(0, m.start() - 40) : m.end() + 40].replace("\n", " ")
+        print(f"         forbidden pattern present but {why.upper()} — READ THIS: {p}")
         print(f"           ...{excerpt.strip()}...")
     for p in missing:
         print(f"         required pattern absent:   {p}")
