@@ -4,6 +4,14 @@ Groundledger is a set of Agent Skills, three reusable primitives, a structural v
 
 It is MIT-licensed. For this README, a fresh clone was checked with `python3 scripts/validate.py` and `python3 evals/check.py --lint`. It was previously published as Clearcast (unrelated to Clearcast UK).
 
+## Why the skills are publishing skills
+
+The three primitives — `grounding-law`, `falsifiability-contract`, and `write-gate` — are domain-neutral. They impose blocking states on an agent: a claim is unsupported until evidence resolves, a write does not complete until the gate passes. Nothing in them is specific to publishing.
+
+The skills are the application layer, and the ones shipped here target editorial, SEO, and paid-media work. Publishing is a domain where an unsupported claim is visible, the same constraints apply, and the whole thing can be inspected by anyone.
+
+To apply the primitives to another domain, write skills against them. The primitives do not change.
+
 ## The problem
 
 An unsupported number, citation, or “I updated the campaign” still looks like a finished answer. A reviewer who trusts the fluent sentence stops looking. Prompting “don’t hallucinate” does not create a state the agent is forbidden to leave. Post-hoc reading misses the same class of failure when the invention is one clause in otherwise careful prose.
