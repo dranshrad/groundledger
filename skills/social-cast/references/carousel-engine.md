@@ -87,6 +87,8 @@ Ratio **4:5**. Each slide stands alone (no shared bleed).
 
 1. **Progress bar** — bottom, 3px, fully rounded. Width = `(index+1)/total`.
    CORE on PAPER slides, white on INK. Never omit it.
+   Gradient slides keep the bar too (owner decision 2026-10-04). On a gradient, use white or CORE,
+   whichever has the higher contrast against the gradient behind the bar.
 2. **Swipe cue** — right edge, ~48px fade + chevron. Put it on every slide **except**
    the last (its removal signals “end”).
 3. **Safe padding** — content clear of bar and cue.
