@@ -20,6 +20,6 @@
 ## Rules
 
 1. No silent industry benchmarks.  
-2. If CVR unknown, solve for required CVR at a bid — do not invent CVR.  
-3. Blended account ROAS ≠ product truth; segment when possible.  
+2. If CVR is unknown, solve for the required CVR at a bid. Do not invent CVR.  
+3. Blended account ROAS ≠ product truth. Segment when possible.  
 4. Pass results into `budget` and `trial` modes as fences, not slogans.  

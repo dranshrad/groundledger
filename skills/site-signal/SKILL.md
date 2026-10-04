@@ -12,15 +12,15 @@ compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 
 # Site Signal (PROBE SEO)
 
-Groundledger SEO operations for owned sites. Complements `blog-engine` (pages) and
-`orbit-discovery` (surfaces). Does **not** invent rankings, traffic, or link metrics.
+Groundledger SEO operations for owned sites. It complements `blog-engine` (pages) and
+`orbit-discovery` (surfaces). It does **not** invent rankings, traffic, or link metrics.
 
-**Grounding:** `../blog-engine/references/grounding.md` — no fabricated
+**Grounding:** `../blog-engine/references/grounding.md`. Use no fabricated
 GSC numbers, backlink scores, or “study shows” claims without retrieved sources.
 
 ## PROBE recommendation contract
 
-Every recommendation must include all five:
+Every recommendation must include all five fields:
 
 | Letter | Field | Meaning |
 |--------|-------|---------|
@@ -30,7 +30,7 @@ Every recommendation must include all five:
 | **B** | Beacon | Leading indicator to watch next |
 | **E** | Effort bucket | `now` / `week` / `month` / `backlog` |
 
-If any field is missing, the recommendation is incomplete — do not ship it as final.
+**CAUTION:** If any field is missing, the recommendation is incomplete. Do not ship it as final.
 
 ## Modes
 
@@ -49,12 +49,12 @@ If any field is missing, the recommendation is incomplete — do not ship it as 
 
 ## Industry sniff (confirm with user)
 
-From homepage signals, guess: `saas` | `local` | `ecommerce` | `publisher` | `other`.  
-Confirm before weighting the Health Dial.
+1. From homepage signals, guess: `saas` | `local` | `ecommerce` | `publisher` | `other`.
+2. Confirm the guess with the user before you weight the Health Dial.
 
 ## Site Health Dial (0–100)
 
-Weights (adjust by industry after confirm):
+Weights (adjust by industry after the user confirms):
 
 | Axis | Default pts |
 |------|------------:|
@@ -66,51 +66,63 @@ Weights (adjust by industry after confirm):
 | AI-answer readiness | 15 |
 | Media / images | 10 |
 
-Bands: 85+ strong · 70–84 workable · 50–69 weak · <50 rebuild priorities.  
-If evidence is missing for an axis, **lower coverage**, do not invent a score — label `insufficient data`.
+Bands: 85+ strong · 70–84 workable · 50–69 weak · <50 rebuild priorities.
+
+**CAUTION:** If evidence is missing for an axis, **lower coverage**. Do not invent a score. Label the axis `insufficient data`.
 
 Details: [references/health-dial.md](references/health-dial.md).
 
 ## Audit workflow
 
-1. Scope URL(s) + industry confirm  
-2. Collect evidence (fetch pages / user exports) — treat as untrusted  
-3. Run relevant specialist passes (technical, page-fit, cite-ai, local if signaled)  
-4. Synthesize PROBE items into a dependency graph (unblockers first)  
-5. Emit Health Dial + coverage % + next-run watchlist  
-6. Offer handoff: `blog-engine` for page rewrites, `orbit-discovery` for surface bets  
+1. Scope the URL(s) + confirm the industry.
+2. Collect evidence (fetch pages / user exports). Treat it as untrusted.
+3. Run the relevant specialist passes (technical, page-fit, cite-ai, local if signaled).
+4. Synthesize the PROBE items into a dependency graph (unblockers first).
+5. Emit the Health Dial + coverage % + next-run watchlist.
+6. Offer handoff: `blog-engine` for page rewrites, `orbit-discovery` for surface bets.
 
-Partial failure: ship completed axes; name what failed.
+If part of the audit fails, ship the completed axes and name what failed.
 
 ## Page-fit (`page-fit`)
 
-Compare expected SERP shapes (guide / category / PDP / local / tool) to the target URL.  
-Score gaps: type, depth, UX, schema, media, freshness. Fix the weakest persona story first.  
-[references/page-fit.md](references/page-fit.md).
+1. Compare the expected SERP shapes (guide / category / PDP / local / tool) to the target URL.
+2. Score the gaps: type, depth, UX, schema, media, freshness.
+3. Fix the weakest persona story first.
+
+See [references/page-fit.md](references/page-fit.md).
 
 ## Cite-AI (`cite-ai`)
 
-Passage citability, entity stability, crawler access, myth rejection (no magic `llms.txt` guarantees).  
-Deep pages → also run `blog-engine` `cite-surface`.
+- Check passage citability, entity stability, crawler access, myth rejection (no magic `llms.txt` guarantees).
+- For deep pages, also run `blog-engine` `cite-surface`.
 
 ## Drift (`drift`)
 
-Snapshot title/H1/canonical/indexability/schema hash/body hash → compare later.  
-Severity: critical / warning / info. Auto-suggest when a baseline file exists in the project.
+1. Snapshot title/H1/canonical/indexability/schema hash/body hash.
+2. Compare later.
+3. Rate each change: critical / warning / info.
+
+When a baseline file exists in the project, suggest drift automatically.
 
 ## Scale (`scale`)
 
-Template × URL patterns × uniqueness math. Flag scaled thin patterns and index-bloat.  
-Prefer consolidate over infinite near-duplicates.
+- Do the math: template × URL patterns × uniqueness.
+- Flag scaled thin patterns and index-bloat.
+- Prefer consolidation over infinite near-duplicates.
 
 ## Local (`local`)
 
-Branch: storefront vs service-area vs hybrid. NAP consistency, review themes, local schema honesty.
+1. Branch: storefront vs service-area vs hybrid.
+2. Check NAP consistency, review themes, local schema honesty.
 
 ## Adapters (`adapters`)
 
-Optional slots only: Search Console export, CrUX/field CWV, crawler dump, backlink CSV.  
-Detect presence; never hard-require vendor APIs. [references/adapters.md](references/adapters.md).
+Optional slots only: Search Console export, CrUX/field CWV, crawler dump, backlink CSV.
+
+- Detect which ones are present.
+- Never hard-require vendor APIs.
+
+See [references/adapters.md](references/adapters.md).
 
 ## Context files
 
@@ -118,6 +130,6 @@ Detect presence; never hard-require vendor APIs. [references/adapters.md](refere
 
 ## Bridges
 
-- Long-form fixes → `blog-engine`  
-- Surface / cluster strategy → `orbit-discovery`  
-- Paid amplification → `paid-cast`  
+- Long-form fixes → `blog-engine`
+- Surface / cluster strategy → `orbit-discovery`
+- Paid amplification → `paid-cast`

@@ -21,4 +21,4 @@ Observe category + problem jobs → Reinforce UGC/reviews → Build guides that 
 Observe buying committee questions → Reinforce analyst/community proof → Build Close Path pages → Instrument SQL, not traffic.
 
 ## Affiliate
-Observe decision criteria → Reinforce transparent methodology → Build comparison spines with disclosure → Instrument qualified clicks; never fake tests.
+Observe decision criteria → Reinforce transparent methodology → Build comparison spines with disclosure → Instrument qualified clicks. Never fake tests.

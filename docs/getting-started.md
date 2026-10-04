@@ -5,13 +5,15 @@
 ```bash
 git clone https://github.com/dranshrad/groundledger.git
 cd groundledger
-bash scripts/install.sh
+bash scripts/install.sh --link
+bash scripts/setup-auto-sync.sh            # git hooks; add --launchd on macOS
 ```
 
-Claude only: `bash scripts/install.sh --claude` → `~/.claude/skills/`  
-Cursor only: `bash scripts/install.sh --cursor` → `~/.cursor/skills/`
+Claude only: `bash scripts/install.sh --claude --link` → `~/.claude/skills/`  
+Cursor only: `bash scripts/install.sh --cursor --link` → `~/.cursor/skills/`
 
-**Cowork:** zip each `skills/<name>/` folder and upload under Customize → Skills.
+**Cowork:** `bash scripts/pack-cowork.sh` then upload `dist/cowork-skills/*.zip`,
+or grab the rolling release [`cowork-skills-latest`](https://github.com/dranshrad/groundledger/releases/tag/cowork-skills-latest).
 
 ## 2. Optional context files
 

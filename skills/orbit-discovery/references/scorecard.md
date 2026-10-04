@@ -5,7 +5,7 @@
 **Buyer:** Job clarity · Risk reduced · Next action  
 **Machine:** Extractable opens · Entity stability · Evidence labels  
 
-Ship guidance: both ≥ 10/15 or accept residuals.
+Ship guidance: both ≥ 10/15, or the user accepts the residuals.
 
 ## Orbit Dial (extended)
 
@@ -26,6 +26,6 @@ Visibility: /5
 Corroboration: /5
 Revenue link: /5
 Maintenance: /5
-**Dial total:** /40
+**Dial total:** /50
 Blockers:
 ```

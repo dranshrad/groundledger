@@ -13,9 +13,11 @@ compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 
 Groundledger workspace and publishing-ops skill.
 
-**Grounding:** [Grounding Law](../blog-engine/references/grounding.md) is binding at
-`ship`. Do not pass Ship Gate while any claim-ledger row is `blocked`, or while a
-paid change pack claims writes that no approved MutationLatch authorised.
+**Grounding:** the [Grounding Law](../blog-engine/references/grounding.md) is binding at `ship`.
+
+**CAUTION:** Do not pass the Ship Gate in either of these cases:
+- any claim-ledger row is `blocked`;
+- a paid change pack claims writes that no approved MutationLatch authorised.
 
 ## Modes
 
@@ -31,7 +33,7 @@ paid change pack claims writes that no approved MutationLatch authorised.
 
 ## Workspace Boot (`boot`)
 
-Ask: studio variant + name + local path.
+Ask for: studio variant + name + local path.
 
 ### Studios
 
@@ -42,21 +44,34 @@ Ask: studio variant + name + local path.
 | **Op-Ed Shelf** | `posts/<topic>/` `drafts/` `archive/` |
 | **Doc Templates** | `templates/` `exports/` `archive/` |
 
-Write a short `STUDIO.md` describing conventions. Do not create secrets. Optional: remind user they can `git init` — do not force public GitHub creation.
+Then:
+1. Write a short `STUDIO.md` that describes the conventions.
+2. Do not create secrets.
+3. Optional: remind the user that they can `git init`.
+
+**WARNING:** Do not force public GitHub creation.
 
 Folder rules: [references/studio-layout.md](references/studio-layout.md).
 
 ## Draft Lineage (`lineage`)
 
-Copy current draft to `vN+1` (or dated stamp). Require a **diff contract** (KEEP/CHANGE/DELETE). Never overwrite `vN` in place.
+1. Copy the current draft to `vN+1` (or a dated stamp).
+2. Require a **diff contract** (KEEP/CHANGE/DELETE).
+3. Never overwrite `vN` in place.
 
 ## Version Vault (`vault`)
 
-Move superseded versions into `archive/YYYY-MM/` with a one-line reason log.
+Move superseded versions into `archive/YYYY-MM/`, with a one-line reason log.
 
 ## Cast Desk Status (`status`)
 
-Scan workspace; summarize: active drafts, latest versions, published count, stale (>N days) items.
+Scan the workspace. Summarize:
+- active drafts
+- latest versions
+- published count
+- stale (>N days) items
+
+N is the user's threshold. If the user gave no N, report each draft's age in days and do not label any item stale.
 
 ## Export Pack (`export`)
 
@@ -67,15 +82,24 @@ From a draft path, produce:
 - Plain-text stripped copy
 - Manifest listing files
 
-Does not claim pixel-perfect PDF; note user may print HTML to PDF.
+Do not claim pixel-perfect PDF. Note that the user may print the HTML to PDF.
 
 ## Ship Gate (`ship`)
 
-Handoff checklist: final path, CLEAR/Ship Scan status if blog, cast pack if social, CMS fields, URL slug, OG image, owner. Pair with blog-engine **Release Latch**.
+Handoff checklist:
+- final path
+- CLEAR/Ship Scan status, if blog
+- cast pack, if social
+- CMS fields
+- URL slug
+- OG image
+- owner
+
+Pair it with the blog-engine **Release Latch**.
 
 ## Collection Index (`index`)
 
-Generate `INDEX.md` listing titles, dates, jobs, paths for a posts directory.
+Generate `INDEX.md` for a posts directory. List titles, dates, jobs and paths.
 
 ## Bridges
 

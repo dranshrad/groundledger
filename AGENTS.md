@@ -10,7 +10,8 @@ Frontmatter: `name`, `description`, `license` (MIT). Keep `name` = directory nam
 
 All agents must follow `skills/blog-engine/references/grounding.md`.  
 Paid media: observe-only unless MutationLatch is open (`skills/paid-cast/`).  
-Site SEO recommendations must be PROBE-complete (`skills/site-signal/`).
+Site SEO recommendations must be PROBE-complete (`skills/site-signal/`).  
+Full article pipelines run through `skills/signal-os/` (6 passes, max 2 review loops).
 
 ## Clients
 

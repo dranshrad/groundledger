@@ -15,8 +15,12 @@ Constraint grid for paid creative and landing claims.
 
 ## Pass/fail
 
-Creative or landing copy **fails** if it uses a banned claim, invents social proof, or contradicts `BRAND.md`.  
-Failed items get PROBE-style fixes via `editorial-pass` / `blog-engine`, not “just launch it.”
+Creative or landing copy **fails** if it does any of these:
+- uses a banned claim;
+- invents social proof;
+- contradicts `BRAND.md`.
+
+Give failed items PROBE-style fixes via `editorial-pass` / `blog-engine`. Never “just launch it.”
 
 ## Evidence
 

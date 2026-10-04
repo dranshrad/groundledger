@@ -20,8 +20,8 @@ Markdown table (or JSON if the user asks):
 
 Status meanings:
 
-- `verified` — source checked; supports the claim
-- `attributed` — clearly cited; not re-fetched in this session but URL given
+- `verified` — source checked, and it supports the claim
+- `attributed` — clearly cited, with URL given, but not re-fetched in this session
 - `author-supplied` — user attested first-hand detail
 - `blocked` — must fix before ship
 
@@ -53,11 +53,11 @@ Question design rules:
 
 | ID | Risk | Severity | Mitigation | Owner decision |
 |----|------|----------|------------|----------------|
-| R1 | Stat may age in 90 days | medium | calendar update trigger | accept | fix |
-| R2 | YMYL advice could be over-read | high | add clinician disclaimer | accept | fix |
+| R1 | Stat may age in 90 days | medium | calendar update trigger | accept / fix |
+| R2 | YMYL advice could be over-read | high | add clinician disclaimer | accept / fix |
 ```
 
-Ship only if every `high` risk is fixed or explicitly accepted by the user.
+**CAUTION:** Ship only if every `high` risk is fixed, or the user explicitly accepts it.
 
 ## 4. Diff contract (improve mode)
 

@@ -13,14 +13,14 @@ compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 
 # Paid Cast (SAFE media)
 
-Groundledger paid acquisition desk. Complements `orbit-discovery` (organic surfaces),
+Groundledger paid acquisition desk. It complements `orbit-discovery` (organic surfaces),
 `site-signal` (landing SEO), and `social-cast` (organic social).
 
-**Default: observe-only.** No platform mutations, no budget edits, no status flips
-unless **MutationLatch** is open.
+**WARNING:** **Default: observe-only.** Make no platform mutations, no budget edits and no status flips
+unless the **MutationLatch** is open. A live change spends real money.
 
-**Grounding:** `../blog-engine/references/grounding.md` — no invented ROAS,
-CPAs, or “industry benchmarks” without a cited source the user accepts.
+**Grounding:** `../blog-engine/references/grounding.md`. Use no invented ROAS,
+CPAs, or “industry benchmarks” without a cited source that the user accepts.
 
 ## SAFE loop
 
@@ -33,20 +33,21 @@ CPAs, or “industry benchmarks” without a cited source the user accepts.
 
 ## MutationLatch (writes)
 
-Latch stays **closed** until all are true:
+The latch stays **closed** until all of these are true:
 
-1. User explicitly asks to draft or apply a change pack  
-2. Scope listed (accounts / campaigns / ad sets)  
-3. Ceilings set (max daily $, max % budget move, kill date)  
-4. Idempotency key or rollback cue recorded  
-5. User says **approve** on the exact draft  
+1. The user explicitly asks to draft or apply a change pack.
+2. The scope is listed (accounts / campaigns / ad sets).
+3. Ceilings are set (max daily $, max % budget move, kill date). Ceilings must be numeric, or explicitly `unlimited` with the user typing that word.
+4. An idempotency key or rollback cue is recorded.
+5. The user says **approve** on the exact draft.
 
-Without latch: deliver audit + draft-only recommendations.  
-Never pretend a change was applied in-platform.
+Without the latch:
+- Deliver the audit + draft-only recommendations. Mark each draft change pack `DRAFT — NOT APPLIED`.
+- Never pretend that a change was applied in-platform.
 
 ## Claim / evidence / confidence
 
-Every material finding:
+Write every material finding in this form:
 
 ```
 Claim: …
@@ -54,7 +55,7 @@ Evidence: … (export row, screenshot note, UI path)
 Confidence: high | medium | low
 ```
 
-Low confidence → ask or mark unknown. Do not bluff attribution.
+If confidence is low, ask or mark the finding unknown. Do not bluff attribution.
 
 ## Modes
 
@@ -73,43 +74,53 @@ Low confidence → ask or mark unknown. Do not bluff attribution.
 | `optimize-draft` | Change pack under MutationLatch |
 
 Platform packs (Google / Meta / LinkedIn / Microsoft-style) are **draft mutation
-templates** only — never auto-execute. [references/mutation-latch.md](references/mutation-latch.md).
+templates** only. Never auto-execute them. See [references/mutation-latch.md](references/mutation-latch.md).
 
 ## Unit economics (`math`)
 
-Require inputs the user can supply: AOV/LTV proxy, margin, target CAC or payback.  
-If missing: compute scenarios labeled `assumption`, not facts.  
-[references/unit-economics.md](references/unit-economics.md).
+1. Require inputs that the user can supply: AOV/LTV proxy, margin, target CAC or payback.
+2. If inputs are missing, compute scenarios labeled `assumption`, not facts.
+
+See [references/unit-economics.md](references/unit-economics.md).
 
 ## Brand Lattice (`brand`)
 
 Allowed claims · banned claims · competitor rules · sensitive topics · offer
-language. Creative and landing copy must pass the lattice before scale.
+language.
+
+Creative and landing copy must pass the lattice before scale.
 
 ## Budget Lattice (`budget`)
 
-Daily/monthly caps · channel reserves · test budget slice · emergency kill.  
-Pace mode watches spend vs plan without changing bids.
+Daily/monthly caps · channel reserves · test budget slice · emergency kill.
+
+Pace mode watches spend vs plan. It does not change bids.
 
 ## Trial Deck (`trial`)
 
-Hypothesis · primary metric · guardrails · sample / time stop · rollback.  
-One primary metric per trial. No “test everything.”
+Hypothesis · primary metric · guardrails · sample / time stop · rollback.
+
+Use one primary metric per trial. No “test everything.”
 
 ## Attribution gate (`attrib`)
 
-Before comparing channels: same window, same conversion def, same currency,
-same inclusion rules. If incomparable → say so; do not crown a winner.
+Before you compare channels, require: same window, same conversion def, same currency,
+same inclusion rules.
+
+If the channels are incomparable, say so. Do not crown a winner.
 
 ## Landing (`landing`)
 
-Message match, offer clarity, speed honesty, form friction, proof proximity.  
-Deep SEO issues → hand off to `site-signal`. Copy rewrites → `blog-engine` / `editorial-pass`.
+Check: message match, offer clarity, speed honesty, form friction, proof proximity.
+
+- Deep SEO issues → hand off to `site-signal`.
+- Copy rewrites → `blog-engine` / `editorial-pass`.
 
 ## Creative (`creative`)
 
-Fatigue signals from user data only. Variant matrix: angle × format × offer.  
-Respect Brand Lattice.
+- Take fatigue signals from user data only.
+- Variant matrix: angle × format × offer.
+- Respect the Brand Lattice.
 
 ## Context files
 
@@ -117,7 +128,7 @@ Respect Brand Lattice.
 
 ## Bridges
 
-- Landing SEO → `site-signal`  
-- Organic social → `social-cast`  
-- Long-form proof pages → `blog-engine`  
-- Surface strategy → `orbit-discovery`  
+- Landing SEO → `site-signal`
+- Organic social → `social-cast`
+- Long-form proof pages → `blog-engine`
+- Surface strategy → `orbit-discovery`

@@ -1,6 +1,6 @@
 # PROBE contract (examples)
 
-Incomplete recommendations are rejected at delivery.
+Reject incomplete recommendations at delivery.
 
 ## Complete example
 

@@ -31,4 +31,6 @@ Goal: detect when the target URL’s **page type** fights the SERP’s dominant 
 
 ## Handoff
 
-Structural rewrite → `blog-engine`. Multi-URL cluster → `orbit-discovery`. Paid tests on fixed landing → `paid-cast`.
+- Structural rewrite → `blog-engine`.
+- Multi-URL cluster → `orbit-discovery`.
+- Paid tests on fixed landing → `paid-cast`.

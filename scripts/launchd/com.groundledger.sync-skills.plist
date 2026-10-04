@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template. scripts/setup-auto-sync.sh --launchd substitutes
+  __GROUNDLEDGER_ROOT__ and __HOME__, then installs to ~/Library/LaunchAgents/.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.groundledger.sync-skills</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__GROUNDLEDGER_ROOT__/scripts/sync-skills.sh</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>GROUNDLEDGER_REPO</key>
+    <string>__GROUNDLEDGER_ROOT__</string>
+    <key>GROUNDLEDGER_SYNC_METHOD</key>
+    <string>link</string>
+    <key>GROUNDLEDGER_SYNC_PULL</key>
+    <string>1</string>
+    <key>GROUNDLEDGER_SYNC_PLUGIN</key>
+    <string>1</string>
+    <key>GROUNDLEDGER_SYNC_PACK_COWORK</key>
+    <string>1</string>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:__HOME__/.local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>9</integer>
+    <key>Minute</key>
+    <integer>15</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>__HOME__/Library/Logs/groundledger/sync-skills.log</string>
+  <key>StandardErrorPath</key>
+  <string>__HOME__/Library/Logs/groundledger/sync-skills.err.log</string>
+  <key>WorkingDirectory</key>
+  <string>__GROUNDLEDGER_ROOT__</string>
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

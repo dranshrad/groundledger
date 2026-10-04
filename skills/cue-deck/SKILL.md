@@ -10,8 +10,10 @@ compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 
 # Cue Deck
 
-Groundledger prompt cards. Every card that asks for facts inherits the
-[Grounding Law](../blog-engine/references/grounding.md) — a drawn card never
+Groundledger prompt cards.
+
+Every card that asks for facts inherits the
+[Grounding Law](../blog-engine/references/grounding.md). A drawn card never
 licenses an unledgered number.
 
 ## Modes
@@ -24,7 +26,7 @@ licenses an unledgered number.
 
 ## Card schema
 
-Every card uses:
+Every card uses this schema:
 
 ```markdown
 ## Cue — [id]
@@ -39,7 +41,7 @@ Every card uses:
 
 ## Index
 
-Load full text from [references/cards.md](references/cards.md):
+Load the full text from [references/cards.md](references/cards.md):
 
 | ID | Stage / mode |
 |----|----------------|
@@ -60,4 +62,6 @@ Load full text from [references/cards.md](references/cards.md):
 | `A-snap` | Paid Snapshot (observe-only) |
 | `A-latch` | MutationLatch checklist |
 
-When drawing, copy the prompt block verbatim into the agent turn, then execute via the **Next skill**.
+When you draw a card:
+1. Copy the prompt block verbatim into the agent turn.
+2. Execute it via the **Next skill**.

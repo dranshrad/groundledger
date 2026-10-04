@@ -23,4 +23,4 @@ Packaging gate before CMS/handoff. Complements Ship Scan + CLEAR.
 LATCH: open | closed
 ```
 
-`closed` only when required boxes pass.
+Set `closed` only when the required boxes pass. Here `closed` means **ready for handoff**. (In paid-cast, a closed MutationLatch means the opposite: no live changes.)

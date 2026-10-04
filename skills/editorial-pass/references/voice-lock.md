@@ -13,4 +13,6 @@ Fill before SPARK pass 1. Keep under 12 lines.
 - Locale: en-US | en-GB | keep-as-is
 ```
 
-If `VOICE.md` exists in project root, derive the lock from it, then confirm with the user only if conflicts appear.
+If `VOICE.md` exists in the project root:
+1. Derive the lock from it.
+2. Confirm with the user only if conflicts appear.

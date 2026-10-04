@@ -81,7 +81,7 @@ python3 evals/check.py evals/cases/EV-001-invented-benchmark.md evals/replies/EV
 
 **In plain language.** The agent is told it may not present work as final while a material claim is unsupported, a ledger row is `blocked`, or a write gate is closed. The tools in this repo check that the skills still say that after install, and they can score a saved reply against a bait case. They do not sit on the model API.
 
-**The skills.** Nine directories under `skills/`. Clients install them flat (`~/.claude/skills/<name>/`, `~/.cursor/skills/<name>/`, or a Cowork zip). Cross-skill links are sibling-relative (`../blog-engine/references/grounding.md`) so they resolve in the repo **and** after that flat copy.
+**The skills.** Ten directories under `skills/` (nine skills plus `signal-os`, the 6-pass article conductor). Clients install them flat (`~/.claude/skills/<name>/`, `~/.cursor/skills/<name>/`, or a Cowork zip). Cross-skill links are sibling-relative (`../blog-engine/references/grounding.md`) so they resolve in the repo **and** after that flat copy.
 
 | Skill | What it is for |
 |-------|----------------|
@@ -126,7 +126,7 @@ cp -R skills/. ~/.cursor/skills/
 
 Or: `bash scripts/install.sh` (Claude and Cursor if those home directories exist), `bash scripts/install.sh --claude`, `bash scripts/install.sh --cursor`.
 
-Cowork: zip each folder under `skills/` so `SKILL.md` is at the zip root, then upload via Customize → Skills. That zip upload was not executed as part of writing this README.
+Cowork / claude.ai: run `bash scripts/pack-cowork.sh`. Each zip holds the skill folder at its root (`<name>.zip → <name>/SKILL.md`), the layout support.claude.com/en/articles/12512198 requires. Upload via Customize → Skills. CI also publishes them as the `cowork-skills-latest` release.
 
 Claude Code plugin marketplace commands live in [INSTALL.md](INSTALL.md). They are slash commands in that client; they were not executed as part of writing this README.
 

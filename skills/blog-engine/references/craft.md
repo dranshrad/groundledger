@@ -18,8 +18,8 @@ Do not use em dashes (U+2014). Use commas, hyphens, colons, or split sentences.
 - Headings describe jobs, not keywords
 - Never skip heading levels
 - Open major sections with a declarative answer
-- One idea per paragraph; split when comprehension drops
-- Summary boxes optional; only when they aid scanning
+- One idea per paragraph. Split the paragraph when comprehension drops.
+- Summary boxes are optional. Use them only when they aid scanning.
 
 ## Visuals
 
@@ -35,7 +35,7 @@ notes. Alt text must describe function, not “image1”.
 ## Links
 
 - Descriptive anchors (state the destination’s job)
-- External links support claims; they are not decoration
+- External links support claims. They are not decoration.
 - Internal links only to intent-related URLs
 - Link purpose must be clear out of context (accessibility)
 
@@ -61,5 +61,7 @@ Schema is optional hygiene, not a citation cheat code.
 
 ## Platform output
 
-Detect project signals (Next/MDX, Hugo, Astro, WordPress, etc.) and adapt
-front matter / component constraints. Default: portable markdown.
+1. Detect project signals (Next/MDX, Hugo, Astro, WordPress, etc.).
+2. Adapt the front matter / component constraints to them.
+
+Default: portable markdown.

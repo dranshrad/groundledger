@@ -15,4 +15,4 @@ Conversion / bottom-of-funnel brief and audit.
 
 Job clarity · Proof density · Objection coverage · CTA singularity · Measurement wired · Extractable offers
 
-Ship guidance: ≥24/30 or accept residuals.
+Ship guidance: ≥24/30, or the user accepts the residuals.

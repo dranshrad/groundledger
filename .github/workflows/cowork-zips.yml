@@ -1,0 +1,55 @@
+name: cowork-zips
+
+on:
+  push:
+    branches: [master, main]
+    paths:
+      - "skills/**"
+      - "scripts/pack-cowork.sh"
+      - ".github/workflows/cowork-zips.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pack:
+    name: Pack Cowork skill zips
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pack zips
+        run: bash scripts/pack-cowork.sh
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: groundledger-cowork-skills
+          path: |
+            dist/cowork-skills/*.zip
+            dist/groundledger-cowork-all.zip
+          if-no-files-found: error
+
+      - name: Publish / update GitHub Release (cowork-skills-latest)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ github.sha }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          TAG=cowork-skills-latest
+          TITLE="Cowork skill zips (latest)"
+          SHORT="${SHA:0:7}"
+          NOTES="Auto-built from \`${SHORT}\` on \`${REF_NAME}\`.
+
+          Upload each \`*.zip\` in Claude Desktop → Cowork → Customize → Skills.
+          Bundle: \`groundledger-cowork-all.zip\` (contains the per-skill zips)."
+
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/cowork-skills/*.zip dist/groundledger-cowork-all.zip --clobber
+            gh release edit "$TAG" --title "$TITLE" --notes "$NOTES"
+          else
+            gh release create "$TAG" dist/cowork-skills/*.zip dist/groundledger-cowork-all.zip \
+              --title "$TITLE" --notes "$NOTES"
+          fi

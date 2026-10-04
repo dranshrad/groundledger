@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# After merge/pull: if on master/main and skills/** changed, sync clients.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# shellcheck source=/dev/null
+source "$ROOT/.githooks/_sync-if-skills-changed.sh"
+sync_if_skills_changed "ORIG_HEAD" "HEAD"
