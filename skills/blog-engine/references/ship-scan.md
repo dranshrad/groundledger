@@ -28,4 +28,7 @@ SEO + extractability checklist. Does not replace CLEAR.
 
 ## Site / batch mode
 
-For a directory: run per URL, then summarize Critical / High / Medium. Pair with Job Collision Map for overlap.
+For a directory:
+1. Run the scan per URL.
+2. Summarize Critical / High / Medium.
+3. Pair it with the Job Collision Map for overlap.

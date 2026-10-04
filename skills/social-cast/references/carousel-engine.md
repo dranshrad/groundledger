@@ -23,9 +23,9 @@ Pull from `CAST.md` / `BRAND.md` / `VOICE.md` when present. Ask only for gaps:
 | Mark | Logo path, brand initial, or skip |
 | Assets | Optional: product shot, screenshot (paths or URLs) |
 
-If a brand URL is given, infer colour temperature and voice from visible styling;
-confirm the hex before locking. Store answers in `CAST.md` under a `## Carousel`
-block so later runs skip intake.
+If the user gives a brand URL, infer colour temperature and voice from visible styling.
+Confirm the hex before locking. Store the answers in `CAST.md` under a `## Carousel`
+block, so that later runs skip intake.
 
 ## Palette (from one hex)
 
@@ -60,7 +60,7 @@ Google Fonts when rendering HTML.
 
 ## Narrative spine
 
-Default **7 slides**. Flex 5–10 when the topic demands; redistribute jobs, keep
+Default **7 slides**. Flex 5–10 when the topic demands. If you flex, redistribute the jobs, and keep
 **hook first** and **CTA last**.
 
 | # | Job | Background | One job |
@@ -73,25 +73,27 @@ Default **7 slides**. Flex 5–10 when the topic demands; redistribute jobs, kee
 | 6 | Method | PAPER | Numbered steps — feels doable |
 | 7 | Ask | gradient | One clear CTA; no swipe cue; bar at 100% |
 
-**Swipe rhythm:** alternate PAPER / INK; close on gradient. Reshape order only if
-the topic forces it — never break light/dark pulse without saying why.
+**Swipe rhythm:** alternate PAPER / INK. Close on gradient. Reshape the order only if
+the topic forces it. Never break the light/dark pulse without saying why.
 
-Slide 1 is the only slide most people see: write 3 SNAP hook variants, pick one,
-keep the others as A/B notes in the script footer.
+Slide 1 is the only slide most people see:
+1. Write 3 SNAP hook variants.
+2. Pick one.
+3. Keep the others as A/B notes in the script footer.
 
 ## Canvas chrome (every slide)
 
 Ratio **4:5**. Each slide stands alone (no shared bleed).
 
-1. **Progress bar** — bottom, 3px, fully rounded; width = `(index+1)/total`;
-   CORE on PAPER slides, white on INK. Never omit.
-2. **Swipe cue** — right edge, ~48px fade + chevron; on every slide **except**
-   the last (removal signals “end”).
+1. **Progress bar** — bottom, 3px, fully rounded. Width = `(index+1)/total`.
+   CORE on PAPER slides, white on INK. Never omit it.
+2. **Swipe cue** — right edge, ~48px fade + chevron. Put it on every slide **except**
+   the last (its removal signals “end”).
 3. **Safe padding** — content clear of bar and cue.
 
 ## Component kit
 
-Use only these; keep them visually identical across slides.
+Use only these. Keep them visually identical across slides.
 
 | Component | Use |
 |-----------|-----|
@@ -104,7 +106,7 @@ Use only these; keep them visually identical across slides.
 
 ## Output contract
 
-Emit **one** of these (ask if unclear; default = script + HTML preview):
+Emit **one** of these. If unclear, ask. Default = script + HTML preview:
 
 ### A — Slide script (always)
 
@@ -150,9 +152,10 @@ Target: **1080×1350 PNG per slide**, no crop.
 | Motion | Disable transitions during capture |
 
 Prefer a small Python capture script (Playwright/Puppeteer) over fragile shell
-pipelines. Embed local images as base64 so the HTML stays portable. If no
-browser runtime is available, ship the script + HTML and state that PNGs need a
-local export step — do not fake binary files.
+pipelines. Embed local images as base64, so that the HTML stays portable.
+
+**CAUTION:** If no browser runtime is available, ship the script + HTML, and state that the PNGs need a
+local export step. Do not fake binary files.
 
 ## Edit protocol
 
@@ -168,16 +171,16 @@ Never regenerate the whole deck to change one line.
 
 ## Atomize bridge
 
-When `atomize` maps an atom to carousel: run this engine with that atom as the
+When `atomize` maps an atom to carousel, run this engine with that atom as the
 spine seed. Prefer `steps`, `definition` (myth vs fact), and `proof`
-(comparison) atoms. One atom → one carousel; do not cram a whole article into
+(comparison) atoms. One atom → one carousel. Do not cram a whole article into
 seven slides.
 
 ## Non-negotiables
 
 1. Export-ready copy on first output — no “lorem” / placeholders.
 2. Light/dark alternation + progress bar always.
-3. Palette from one hex; two typefaces max.
+3. Palette from one hex. Two typefaces max.
 4. Last slide: no arrow, full bar, one ask.
 5. No invented stats or algorithm lore.
-6. Fix named slides; do not full-regen for a one-line change.
+6. Fix named slides. Do not full-regen for a one-line change.

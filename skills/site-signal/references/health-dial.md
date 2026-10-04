@@ -42,7 +42,7 @@ sites' dials measured at different coverage.
 
 ## Scoring rules
 
-1. Cap any axis at its max weight — no bonus stacking.
-2. Partial evidence → half credit max on that axis, note gap.
+1. Cap any axis at its max weight. No bonus stacking.
+2. Partial evidence → half credit max on that axis. Note the gap.
 3. Contradictions (e.g. schema says InStock, page says sold out) → zero that schema slice + PROBE critical.
 4. Never average competitor scores you did not measure.

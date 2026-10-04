@@ -39,4 +39,4 @@ One question: **"What has never been explained this way before?"**
   clearer than the standard term. Otherwise cut.
 - If the article could be swapped with the top existing post on the topic
   without a reader noticing, it is not done. Name the one section only this
-  author could have written; if none exists, flag it.
+  author could have written. If none exists, flag it.

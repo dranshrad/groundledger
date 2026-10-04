@@ -2,7 +2,7 @@
 
 Merged checklist: Systems Architect + Software Engineering Reviewer + Prompt
 Engineering Specialist. Run in one context. Apply only the sections the article
-touches; skip the rest silently.
+touches. Skip the rest silently.
 
 **Output:** one findings table — no per-section reports.
 
@@ -24,7 +24,7 @@ trade-off) · `minor` (style, polish). Blockers fail the quality gate.
 
 ## Code examples
 
-- Compiles / runs as shown (mentally trace it; run it if a runtime is at hand).
+- Compiles / runs as shown. Mentally trace it. If a runtime is at hand, run it.
 - Modern idiomatic syntax for the stated language/version.
 - Readable: intention-revealing names, no dead code, minimal cleverness.
 - Edge cases: what happens on empty input, error, timeout — handled or the
@@ -39,7 +39,7 @@ trade-off) · `minor` (style, polish). Blockers fail the quality gate.
 - Every prompt shown explains *why* it works (mechanism, not magic).
 - Failure modes named: where the prompt breaks, degrades, or overfits to one
   model.
-- Model-specific claims tagged with model + version; no timeless "LLMs always…".
+- Model-specific claims tagged with model + version. No timeless "LLMs always…".
 - Prompt/technique comparisons are grounded (cited eval or reproducible
   example), never invented benchmark numbers.
 - Evaluation guidance included when the article teaches a prompt pattern:
@@ -47,5 +47,5 @@ trade-off) · `minor` (style, polish). Blockers fail the quality gate.
 
 ## Claims handoff
 
-Any factual claim surfaced here that lacks support goes to `blog-engine`
-`verify` (Claim Probe+) — do not adjudicate evidence in this file.
+Send any factual claim surfaced here that lacks support to `blog-engine`
+`verify` (Claim Probe+). Do not adjudicate evidence in this file.

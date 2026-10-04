@@ -8,7 +8,7 @@ major life decisions.
 1. **Qualified scope** — state who the advice is for and who should ignore it
 2. **No guarantees** — ban “always / never / guaranteed results” unless quoting a rule
 3. **Limitation callout** — visible limits, edge cases, when to get a professional
-4. **Higher evidence bar** — prefer primary/official sources; demote marketing blogs
+4. **Higher evidence bar** — prefer primary/official sources. Demote marketing blogs.
 5. **Harm residual** — risk register must include misuse/harm scenarios
 6. **Accountability** — named author/org with relevant credentials when available
 
@@ -22,7 +22,7 @@ major life decisions.
 
 ## Scoring effect
 
-If YMYL triggers and any intensifier check fails → **ship = no**, regardless of
+**CAUTION:** If YMYL triggers and any intensifier check fails → **ship = no**, regardless of the
 CLEAR total.
 
 ## Examples that trigger

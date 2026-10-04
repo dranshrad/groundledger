@@ -1,6 +1,8 @@
 # Frame & Tone Kit
 
-Tool-agnostic media briefs. Do not invent data for charts.
+Tool-agnostic media briefs.
+
+**CAUTION:** Do not invent data for charts.
 
 ## Hero brief
 

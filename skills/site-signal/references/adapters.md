@@ -12,7 +12,7 @@ Site Signal works from fetched HTML + user files. Vendor tools are **enrichment 
 
 ## Rules
 
-1. Detect presence; ask before assuming access.
+1. Detect presence. Ask before you assume access.
 2. Never invent GSC/CrUX numbers.
-3. Never require a paid API to complete an audit — mark axes `insufficient data` instead.
-4. Normalize column names in prose; do not ship vendor-specific scripts as Groundledger canon.
+3. Never require a paid API to complete an audit. Mark the axes `insufficient data` instead.
+4. Normalize column names in prose. Do not ship vendor-specific scripts as Groundledger canon.

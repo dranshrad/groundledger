@@ -6,7 +6,9 @@ Paid Cast never mutates live spend by default.
 
 Allowed: read exports, summarize UI dumps, draft plans, draft change packs marked `DRAFT — NOT APPLIED`.
 
-Forbidden: claiming a bid/budget/status change happened; pasting “I updated your campaign” without user confirmation.
+**WARNING:** Forbidden:
+- claiming that a bid/budget/status change happened;
+- pasting “I updated your campaign” without user confirmation.
 
 ## Opening the latch
 

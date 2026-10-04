@@ -27,4 +27,6 @@ archive/
 
 ## Version filenames
 
-Prefer `v001.md`, `v002.md` or `2026-07-25-a.md`. Keep originals when vaulting.
+Prefer `v001.md`, `v002.md` or `2026-07-25-a.md`.
+
+**WARNING:** Keep the originals when vaulting.
