@@ -14,10 +14,15 @@ compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 
 Groundledger long-form skill for grounded, publish-ready articles.
 
-**Ship rule:** CLEAR ≥ 85, claim ledger clean, Q-tests pass, residual risk
-accepted, Grounding Law satisfied, and (when requested) Ship Scan + Release Latch green.
+**Ship rule:** ship only when all of these are true:
+- CLEAR ≥ 85
+- claim ledger clean
+- Q-tests pass
+- residual risk accepted
+- Grounding Law satisfied
+- (when requested) Ship Scan + Release Latch green
 
-**Grounding Law:** [references/grounding.md](references/grounding.md) — binding.
+**Grounding Law:** [references/grounding.md](references/grounding.md). It is binding.
 
 ## Modes
 
@@ -47,7 +52,7 @@ accepted, Grounding Law satisfied, and (when requested) Ship Scan + Release Latc
 | `ymyl` | YMYL intensifier |
 | `calendar` | Cadence + update triggers |
 
-Default for a bare topic: `draft` after one JTBD question.
+For a bare topic, default to `draft` after one JTBD question.
 
 ## CLEAR rubric (100)
 
@@ -60,7 +65,13 @@ residual risks, CLEAR scorecard. Templates: [references/artifacts.md](references
 
 ## Draft pipeline (summary)
 
-1. Lock JTBD · 2. Intent purity · 3. Evidence plan · 4. Spine Picker + journey map · 5. Write extractable answers · 6. Stress tests · 7. Deliver or block.
+1. Lock the JTBD.
+2. Check intent purity.
+3. Write the evidence plan.
+4. Run the Spine Picker + journey map.
+5. Write extractable answers.
+6. Run the stress tests.
+7. Deliver or block.
 
 Full craft: [references/craft.md](references/craft.md) · forms: [references/forms.md](references/forms.md) · evidence: [references/evidence.md](references/evidence.md).
 
@@ -79,55 +90,67 @@ Full craft: [references/craft.md](references/craft.md) · forms: [references/for
 
 ### Horizon Brief (`horizon`)
 
-90-day plan: ICP jobs, surface bets, hub/spoke candidates, evidence gaps, KPI per asset. Hand production to `draft` / `graph-run`.
+1. Write a 90-day plan: ICP jobs, surface bets, hub/spoke candidates, evidence gaps, KPI per asset.
+2. Hand production to `draft` / `graph-run`.
 
 ### Spine Picker (`spine`)
 
-Pick form from [references/forms.md](references/forms.md) using JTBD + competitor spine gaps. Output: chosen form + rejected forms + why.
+1. Pick a form from [references/forms.md](references/forms.md) using the JTBD + competitor spine gaps.
+2. Output: chosen form + rejected forms + why.
 
 ### Ship Scan (`ship-scan`)
 
-Owned SEO + extractability checklist (titles, meta, headings, links, OG, schema mirror, extractable opens). See [references/ship-scan.md](references/ship-scan.md). Separate from CLEAR.
+Owned SEO + extractability checklist (titles, meta, headings, links, OG, schema mirror, extractable opens). See [references/ship-scan.md](references/ship-scan.md). It is separate from CLEAR.
 
 ### Job Collision Map (`collision`)
 
-Given a corpus (paths or titles+jobs), flag overlapping JTBDs. Recommend merge, differentiate, or prune.
+1. Given a corpus (paths or titles+jobs), flag overlapping JTBDs.
+2. Recommend merge, differentiate, or prune.
 
 ### Cite Surface Audit (`cite-surface`)
 
-Full citation readiness beyond `cite-probe`: entity stability, passage inventory, crawler access notes, structure for extraction. [references/cite-surface.md](references/cite-surface.md).
+Full citation readiness beyond `cite-probe`: entity stability, passage inventory, crawler access notes, structure for extraction. See [references/cite-surface.md](references/cite-surface.md).
 
 ### Claim Probe+ (`verify`)
 
-Per claim: support status, confidence (`high`/`med`/`low`), echo risk (same claim repeated without new evidence), fix action.
+For each claim, report:
+- support status
+- confidence (`high`/`med`/`low`)
+- echo risk (the same claim repeated without new evidence)
+- fix action
 
 ### Freshness Drift (`freshness`)
 
-From traffic/export deltas or stale dates: classify refresh / consolidate / prune; attach update triggers. [references/freshness.md](references/freshness.md).
+1. From traffic/export deltas or stale dates, classify each page: refresh / consolidate / prune.
+2. Attach update triggers.
+
+See [references/freshness.md](references/freshness.md).
 
 ### Graph Runner (`graph-run`)
 
-Cluster plan → ordered spoke briefs → ship sequence with dependencies. Reject duplicate jobs.
+1. Turn the cluster plan into ordered spoke briefs.
+2. Set the ship sequence with dependencies.
+3. Reject duplicate jobs.
 
 ### Mirror Markup (`mirror`)
 
-Emit JSON-LD only mirroring visible content (`BlogPosting`/`Article`, `Person`/`Organization`, `BreadcrumbList`). No invisible FAQ games.
+Emit JSON-LD only where it mirrors visible content (`BlogPosting`/`Article`, `Person`/`Organization`, `BreadcrumbList`). Play no invisible FAQ games.
 
 ### Locale Lattice (`locale`)
 
-Plan locales, adaptation depth (translate vs cultural), hreflang pairs, parity checklist. [references/locale-lattice.md](references/locale-lattice.md).
+Plan the locales, adaptation depth (translate vs cultural), hreflang pairs, and parity checklist. See [references/locale-lattice.md](references/locale-lattice.md).
 
 ### Frame & Tone Kit (`frame`)
 
-Tool-agnostic briefs: hero brief, chart-from-ledger, optional TTS narration brief. [references/frame-tone.md](references/frame-tone.md).
+Tool-agnostic briefs: hero brief, chart-from-ledger, optional TTS narration brief. See [references/frame-tone.md](references/frame-tone.md).
 
 ### Signal Bridge (`signal-bridge`)
 
-Checklist for plugging CWV, Search Console, analytics, keyword exports — no vendor lock-in. [references/signal-bridge.md](references/signal-bridge.md).
+Checklist for plugging in CWV, Search Console, analytics, keyword exports. No vendor lock-in. See [references/signal-bridge.md](references/signal-bridge.md).
 
 ### Release Latch (`release`)
 
-Pre-handoff: required artifacts present, links resolve policy, hero/social image notes, review.md summary. [references/release-latch.md](references/release-latch.md).
+Before handoff, check: required artifacts present, links resolve policy, hero/social image notes, review.md summary. See [references/release-latch.md](references/release-latch.md).
 
 ## YMYL
 
