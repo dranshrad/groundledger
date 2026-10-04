@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Build per-skill zips for Claude Cowork upload (SKILL.md at zip root).
+# Build per-skill zips for claude.ai / Cowork upload.
+# Layout: <name>.zip → <name>/SKILL.md — the skill FOLDER at the zip root, as
+# support.claude.com/en/articles/12512198 requires ("files directly in ZIP root" is the
+# documented wrong layout; fixed 2026-10-04).
 #
 #   bash scripts/pack-cowork.sh
 #   → dist/cowork-skills/<name>.zip
@@ -18,8 +21,8 @@ for d in "$ROOT/skills"/*/; do
   [[ -f "${d}SKILL.md" ]] || continue
   name="$(basename "$d")"
   (
-    cd "$d"
-    zip -X -q -r "$OUT/${name}.zip" . -x '*.DS_Store' -x '**/.DS_Store'
+    cd "$ROOT/skills"
+    zip -X -q -r "$OUT/${name}.zip" "$name" -x '*.DS_Store' -x '**/.DS_Store'
   )
   count=$((count + 1))
 done
