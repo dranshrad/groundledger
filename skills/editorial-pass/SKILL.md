@@ -11,9 +11,11 @@ compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 
 # Editorial Pass (SPARK Chain)
 
-Groundledger multi-pass editor. Locale is user-chosen (never forced).
+Groundledger multi-pass editor. The user chooses the locale. Never force one.
 
-**Core laws:** preserve author voice · obey Grounding Law (`../blog-engine/references/grounding.md`) — fact freeze means no new invented claims.
+**Core laws:**
+- Preserve the author's voice.
+- Obey the Grounding Law (`../blog-engine/references/grounding.md`). Fact freeze means no new invented claims.
 
 ## Modes
 
@@ -36,7 +38,7 @@ Groundledger multi-pass editor. Locale is user-chosen (never forced).
 | 4 | Reference | Flag unsourced claims | Fabricate sources |
 | 5 | Knife | Tighten; optional SEO on visible truth | Keyword stuffing |
 
-Skip/reorder/stop allowed. Full SPARK → write intermediates without pausing.
+You may skip, reorder or stop passes. For a full SPARK run, write the intermediates without pausing.
 
 ## Intermediates
 
@@ -49,33 +51,41 @@ final.md
 pass-log.md
 ```
 
-Never overwrite the source; copy to `00_original.md` first.
+**WARNING:** Never overwrite the source. Copy it to `00_original.md` first.
 
 ## Voice lock
 
-Before pass 1: [references/voice-lock.md](references/voice-lock.md). Revert flattening edits.
+1. Before pass 1, load [references/voice-lock.md](references/voice-lock.md).
+2. Revert flattening edits.
 
 ## Tone Retarget (`tone`)
 
-Inputs: draft + target tone (e.g. warmer, more formal, less hype).  
-Constraints: zero new claims; preserve meaning; emit diff summary of tone moves only.
+Inputs: draft + target tone (e.g. warmer, more formal, less hype).
+
+Constraints:
+- Add zero new claims.
+- Preserve the meaning.
+- Emit a diff summary of tone moves only.
 
 ## Locale Lock (`locale-lock`)
 
-Apply chosen locale + optional glossary. Default `keep-as-is` if unspecified. Never force en-GB.
+1. Apply the chosen locale + optional glossary.
+2. If the user did not specify a locale, default to `keep-as-is`.
+3. Never force en-GB.
 
 ## Voice Specimens → Mine → Canon
 
-1. **specimens** — store annotated samples under `./voice/specimens/`  
-2. **mine** — extract recurring patterns (length, openers, humor, bans)  
-3. **canon** — write/update `VOICE.md` for suite-wide use  
+1. **specimens** — store annotated samples under `./voice/specimens/`
+2. **mine** — extract recurring patterns (length, openers, humor, bans)
+3. **canon** — write/update `VOICE.md` for suite-wide use
 
 See [references/voice-canon.md](references/voice-canon.md).
 
 ## Fact freeze
 
-No new stats/quotes/studies. Publish-ready evidence → `blog-engine` `verify`.
+Add no new stats/quotes/studies. Send publish-ready evidence work to `blog-engine` `verify`.
 
 ## Bridges
 
-After Knife → optional `blog-engine` `score` or `social-cast` `atomize`. YMYL → blog-engine intensifier.
+- After Knife → optional `blog-engine` `score` or `social-cast` `atomize`.
+- YMYL → blog-engine intensifier (`ymyl`).
