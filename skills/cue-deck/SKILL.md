@@ -1,12 +1,12 @@
 ---
 name: cue-deck
-description: >-
-  Groundledger Cue Deck: original prompt cards keyed to ORBIT stages and CLEAR
-  modes (When, Inputs, Prompt, Output, Risks). Use when the user wants a
-  reusable prompt, strategy cue, or agent instruction for content work.
+description: 'Groundledger Cue Deck: original prompt cards keyed to ORBIT stages and CLEAR modes. Use when the user wants a reusable prompt for content work.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Groundledger Cue Deck: original prompt cards keyed to ORBIT stages and CLEAR modes (When, Inputs, Prompt, Output, Risks). Use when the user wants a reusable prompt, strategy cue, or agent instruction for content work.
 
 # Cue Deck
 

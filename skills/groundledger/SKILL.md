@@ -1,15 +1,12 @@
 ---
 name: groundledger
-description: >-
-  Orchestrator for Groundledger: CLEAR blogging, SPARK editorial, SNAP social,
-  ORBIT discovery, PROBE site SEO, SAFE paid media, Studio Desk ops, Cue Deck
-  prompts, and Signal Over Noise OS full-article pipeline. Enforces grounding
-  (no fabricated stats) and observe-only ads by default. Use for Claude Code,
-  Cursor, or Cowork when the user mentions groundledger, SEO audit, paid media,
-  content suite, flagship article, or is unsure which skill.
+description: 'Groundledger orchestrator for CLEAR, SPARK, SNAP, ORBIT, PROBE and SAFE content skills. Use when the user mentions groundledger or a content suite.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Orchestrator for Groundledger: CLEAR blogging, SPARK editorial, SNAP social, ORBIT discovery, PROBE site SEO, SAFE paid media, Studio Desk ops, Cue Deck prompts, and Signal Over Noise OS full-article pipeline. Enforces grounding (no fabricated stats) and observe-only ads by default. Use for Claude Code, Cursor, or Cowork when the user mentions groundledger, SEO audit, paid media, content suite, flagship article, or is unsure which skill.
 
 # Groundledger Orchestrator
 

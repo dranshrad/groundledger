@@ -1,14 +1,12 @@
 ---
 name: site-signal
-description: >-
-  Groundledger site SEO skill using PROBE recommendations and a weighted Site
-  Health Dial. Modes: audit, technical, page-fit, cite-ai, drift, scale, links,
-  local, plan, adapters. Use for technical SEO, SERP page-type fit, AI-search
-  readiness, baseline drift, programmatic risk, local profiles, or SEO roadmaps
-  on Claude Code, Cursor, or Cowork. Obeys Grounding Law.
+description: 'Groundledger site SEO skill with PROBE recommendations and a Site Health Dial. Use for technical SEO, AI-search readiness and SEO roadmaps.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Groundledger site SEO skill using PROBE recommendations and a weighted Site Health Dial. Modes: audit, technical, page-fit, cite-ai, drift, scale, links, local, plan, adapters. Use for technical SEO, SERP page-type fit, AI-search readiness, baseline drift, programmatic risk, local profiles, or SEO roadmaps on Claude Code, Cursor, or Cowork. Obeys Grounding Law.
 
 # Site Signal (PROBE SEO)
 

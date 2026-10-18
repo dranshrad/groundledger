@@ -1,15 +1,12 @@
 ---
 name: signal-os
-description: >-
-  Signal Over Noise OS: lean editorial conductor for world-class software, AI,
-  and prompt-engineering writing. Runs a 6-pass pipeline (Discover, Brief,
-  Draft, Review, Polish, Ship) by routing to Groundledger skills, adding
-  technical review and adversarial critique. Use for a full article pipeline,
-  flagship technical article, tech/code review of a draft, devil's advocate
-  critique, or a post-publish retrospective.
+description: 'Signal Over Noise OS: six-pass editorial pipeline for software and AI writing. Use for a flagship technical article, draft tech review or critique.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Signal Over Noise OS: lean editorial conductor for world-class software, AI, and prompt-engineering writing. Runs a 6-pass pipeline (Discover, Brief, Draft, Review, Polish, Ship) by routing to Groundledger skills, adding technical review and adversarial critique. Use for a full article pipeline, flagship technical article, tech/code review of a draft, devil's advocate critique, or a post-publish retrospective.
 
 # Signal Over Noise OS (Conductor)
 

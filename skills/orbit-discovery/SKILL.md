@@ -1,13 +1,12 @@
 ---
 name: orbit-discovery
-description: >-
-  Groundledger ORBIT discovery: Stage Triage, Surface Bet Cards, Echo Map, Close
-  Path, Question Spray, Entity Concord, Place Signal, Orbit Dial, Provenance
-  Shelf, Signal Field, and Path Cards. Use for strategy, clusters, SEO surface
-  choice, conversion pages, local signals, or off-site corroboration.
+description: 'Groundledger ORBIT discovery: Stage Triage, Surface Bet Cards, Echo Map, Close Path, Entity Concord. Use for content strategy, clusters and SEO surface choice.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Groundledger ORBIT discovery: Stage Triage, Surface Bet Cards, Echo Map, Close Path, Question Spray, Entity Concord, Place Signal, Orbit Dial, Provenance Shelf, Signal Field, and Path Cards. Use for strategy, clusters, SEO surface choice, conversion pages, local signals, or off-site corroboration.
 
 # Orbit Discovery
 

@@ -1,13 +1,12 @@
 ---
 name: social-cast
-description: >-
-  Groundledger social skill: SNAP hooks, posts, threads, carousels, captions,
-  atomize, PULSE calendars, Cast Strategy Brief, Surface Playbook, Pulse
-  Readout Deep, Format Signal Mine, Growth Action Stack, Audience Orbit. Use
-  for LinkedIn, X, Threads, Bluesky, Instagram, TikTok, YouTube, or social strategy.
+description: 'Groundledger social skill: SNAP hooks, posts, threads, carousels, PULSE calendars. Use for LinkedIn, X, Threads, Instagram, TikTok or social strategy.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Groundledger social skill: SNAP hooks, posts, threads, carousels, captions, atomize, PULSE calendars, Cast Strategy Brief, Surface Playbook, Pulse Readout Deep, Format Signal Mine, Growth Action Stack, Audience Orbit. Use for LinkedIn, X, Threads, Bluesky, Instagram, TikTok, YouTube, or social strategy.
 
 # Social Cast
 

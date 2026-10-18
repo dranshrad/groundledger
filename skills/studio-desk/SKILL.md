@@ -1,13 +1,12 @@
 ---
 name: studio-desk
-description: >-
-  Groundledger workspace ops: Workspace Boot, studios (Longform, Blog Desk, Op-Ed
-  Shelf, Doc Templates), Draft Lineage, Version Vault, Cast Desk Status, Export
-  Pack, Ship Gate, Collection Index. Use when scaffolding a writing workspace,
-  versioning drafts, exporting, or preparing CMS handoff.
+description: 'Groundledger workspace ops: Workspace Boot, studios, Draft Lineage, Version Vault, Export Pack. Use when scaffolding a writing workspace or exporting drafts.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Groundledger workspace ops: Workspace Boot, studios (Longform, Blog Desk, Op-Ed Shelf, Doc Templates), Draft Lineage, Version Vault, Cast Desk Status, Export Pack, Ship Gate, Collection Index. Use when scaffolding a writing workspace, versioning drafts, exporting, or preparing CMS handoff.
 
 # Studio Desk
 

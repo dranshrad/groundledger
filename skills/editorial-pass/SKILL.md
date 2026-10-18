@@ -1,13 +1,12 @@
 ---
 name: editorial-pass
-description: >-
-  Groundledger SPARK multi-pass editor plus Tone Retarget, Locale Lock, Voice
-  Specimens, Style Pattern Mine, and Voice Canon. Preserves author voice, never
-  invents facts. Use when polishing drafts, retargeting tone, or building a
-  style guide from samples.
+description: 'Groundledger SPARK multi-pass editor with Tone Retarget, Locale Lock and Voice Canon. Use when polishing drafts or retargeting tone without inventing facts.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Groundledger SPARK multi-pass editor plus Tone Retarget, Locale Lock, Voice Specimens, Style Pattern Mine, and Voice Canon. Preserves author voice, never invents facts. Use when polishing drafts, retargeting tone, or building a style guide from samples.
 
 # Editorial Pass (SPARK Chain)
 

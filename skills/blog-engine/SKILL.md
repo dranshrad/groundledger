@@ -1,14 +1,12 @@
 ---
 name: blog-engine
-description: >-
-  Groundledger long-form skill: CLEAR rubric, claim ledgers, adversarial Q-tests,
-  grounding law (no fabricated stats), YMYL, Ship Scan, Cite Surface Audit,
-  Freshness Drift, Graph Runner, Locale Lattice, Release Latch. Use for blog
-  drafts, rewrites, SEO audits, citation checks, clusters, multilingual plans,
-  or publish readiness on Claude Code, Cursor, or Cowork.
+description: 'Groundledger long-form skill: CLEAR rubric, claim ledgers, grounding law, Ship Scan. Use for blog drafts, rewrites, SEO audits and publish readiness.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Groundledger long-form skill: CLEAR rubric, claim ledgers, adversarial Q-tests, grounding law (no fabricated stats), YMYL, Ship Scan, Cite Surface Audit, Freshness Drift, Graph Runner, Locale Lattice, Release Latch. Use for blog drafts, rewrites, SEO audits, citation checks, clusters, multilingual plans, or publish readiness on Claude Code, Cursor, or Cowork.
 
 # Blog Engine (CLEAR Editorial System)
 

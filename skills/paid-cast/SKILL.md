@@ -1,15 +1,12 @@
 ---
 name: paid-cast
-description: >-
-  Groundledger paid-media skill with SAFE defaults (Snapshot → Advise → Fence →
-  Experiment). Observe-only unless MutationLatch opens. Modes: audit, plan,
-  math, brand, budget, trial, attrib, landing, creative, pace, optimize-draft.
-  Use for Google/Meta/LinkedIn/Microsoft-style account reviews, unit economics,
-  brand safety lattices, experiment decks, and draft change packs — not live
-  spend edits without explicit approval. Claude Code, Cursor, Cowork.
+description: 'Groundledger paid-media skill with SAFE defaults, observe-only unless MutationLatch opens. Use for Google/Meta/LinkedIn account reviews and unit economics.'
 license: MIT
 compatibility: Claude Code, Cursor, Cowork (Agent Skills)
 ---
+
+## When to use (triggers)
+Groundledger paid-media skill with SAFE defaults (Snapshot → Advise → Fence → Experiment). Observe-only unless MutationLatch opens. Modes: audit, plan, math, brand, budget, trial, attrib, landing, creative, pace, optimize-draft. Use for Google/Meta/LinkedIn/Microsoft-style account reviews, unit economics, brand safety lattices, experiment decks, and draft change packs — not live spend edits without explicit approval. Claude Code, Cursor, Cowork.
 
 # Paid Cast (SAFE media)
 

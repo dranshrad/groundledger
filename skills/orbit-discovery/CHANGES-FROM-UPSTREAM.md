@@ -1,0 +1,1 @@
+- 2026-10-18 description compacted to one line; original trigger text moved to "## When to use (triggers)" in the body; STE gate passed.
