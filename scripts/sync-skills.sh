@@ -7,6 +7,7 @@
 #   GROUNDLEDGER_SYNC_PULL=1|0           (default: 0 — set 1 for launchd)
 #   GROUNDLEDGER_SYNC_PACK_COWORK=1|0    (default: 0)
 #   GROUNDLEDGER_REPO=/path/to/repo      (default: parent of scripts/)
+#   GROUNDLEDGER_SYNC_BRANCHES="a b"     (default: "master main" — branches allowed to pull)
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -15,6 +16,7 @@ METHOD="${GROUNDLEDGER_SYNC_METHOD:-link}"
 DO_PLUGIN="${GROUNDLEDGER_SYNC_PLUGIN:-1}"
 DO_PULL="${GROUNDLEDGER_SYNC_PULL:-0}"
 DO_PACK="${GROUNDLEDGER_SYNC_PACK_COWORK:-0}"
+SYNC_BRANCHES="${GROUNDLEDGER_SYNC_BRANCHES:-master main}"
 
 cd "$ROOT"
 
@@ -22,10 +24,10 @@ if [[ "$DO_PULL" == "1" ]]; then
   # Safety net only — never force; skip if dirty or not on a tracking branch.
   if [[ -z "$(git status --porcelain)" ]]; then
     branch="$(git rev-parse --abbrev-ref HEAD)"
-    if [[ "$branch" == "master" || "$branch" == "main" ]]; then
+    if [[ " $SYNC_BRANCHES " == *" $branch "* ]]; then
       git pull --ff-only || echo "sync-skills: pull skipped (not ff-able)" >&2
     else
-      echo "sync-skills: pull skipped (branch=$branch, not master/main)"
+      echo "sync-skills: pull skipped (branch=$branch, not in: $SYNC_BRANCHES)"
     fi
   else
     echo "sync-skills: pull skipped (working tree dirty)"

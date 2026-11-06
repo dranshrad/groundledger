@@ -2,6 +2,7 @@
 # Shared by post-merge / post-checkout. Not invoked directly by git.
 #
 # Significant-change gate: only sync when the current branch is master/main
+# (or listed in GROUNDLEDGER_SYNC_BRANCHES, space-separated)
 # AND skills/ (or install scripts) changed between the two commits.
 sync_if_skills_changed() {
   local from_ref="$1"
@@ -11,7 +12,8 @@ sync_if_skills_changed() {
 
   local branch
   branch="$(git -C "$ROOT" rev-parse --abbrev-ref HEAD 2>/dev/null || echo "")"
-  if [[ "$branch" != "master" && "$branch" != "main" ]]; then
+  local allowed="${GROUNDLEDGER_SYNC_BRANCHES:-master main}"
+  if [[ " $allowed " != *" $branch "* ]]; then
     exit 0
   fi
 

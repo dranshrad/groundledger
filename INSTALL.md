@@ -31,6 +31,8 @@ What that enables:
 | **Git hooks** | `post-merge` / `post-checkout` on `master`/`main` when `skills/**` changes | Re-link + `claude plugin update` |
 | **launchd** (optional) | Daily ~09:15 | `git pull --ff-only` on master + sync + pack Cowork zips |
 
+Both the hooks and the daily pull act only on `master` or `main`. A clone on another branch skips them (the log says `pull skipped (branch=...)`). Switch the clone to `master`, or set `GROUNDLEDGER_SYNC_BRANCHES="master main <branch>"` in the environment of the hook or job.
+
 Manual sync anytime:
 
 ```bash
