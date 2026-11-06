@@ -17,6 +17,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install PyYAML (real frontmatter parse in validate.py)
+        run: python3 -m pip install --quiet pyyaml
+
       - name: Validate skill structure
         run: python3 scripts/validate.py
 
@@ -58,3 +61,14 @@ jobs:
         # Checks the fixtures are well-formed. Scoring real model output is a
         # separate, human/API-driven step — see evals/README.md.
         run: python3 evals/check.py --lint
+
+      - name: Score saved replies
+        # REVIEW (exit 2) is allowed: a human must read it, CI cannot. A FAIL
+        # breaks the build unless evals/known-failures.txt lists it with a
+        # reason; a listed case that stops failing also breaks it (exit 1).
+        run: |
+          set +e
+          python3 evals/check.py --batch evals/replies --known-failures evals/known-failures.txt
+          rc=$?
+          if [ "$rc" -eq 0 ] || [ "$rc" -eq 2 ]; then exit 0; fi
+          exit "$rc"

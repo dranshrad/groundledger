@@ -19,6 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Validate skills before publishing
+        run: python3 scripts/validate.py
+
       - name: Pack zips
         run: bash scripts/pack-cowork.sh
 
