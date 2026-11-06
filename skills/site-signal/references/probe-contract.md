@@ -18,7 +18,7 @@ E Effort: now
 "Improve meta titles for SEO."
 ```
 
-Missing Proof, Overturn, Beacon.
+Missing Proof, Relies-on, Overturn, Beacon, Effort.
 
 ## Parallel specialist fan-out
 

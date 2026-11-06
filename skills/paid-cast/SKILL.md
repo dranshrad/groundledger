@@ -84,6 +84,8 @@ language.
 
 Creative and landing copy must pass the lattice before scale.
 
+Cells and pass/fail rules: [references/brand-lattice.md](references/brand-lattice.md).
+
 ## Budget Lattice (`budget`)
 
 Daily/monthly caps · channel reserves · test budget slice · emergency kill.

@@ -27,6 +27,8 @@ Every recommendation must include all five fields:
 
 **CAUTION:** If any field is missing, the recommendation is incomplete. Do not ship it as final.
 
+Examples of a complete and an incomplete recommendation: [references/probe-contract.md](references/probe-contract.md).
+
 ## Modes
 
 | Mode | Job |
