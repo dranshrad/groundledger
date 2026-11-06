@@ -1,1 +1,2 @@
 - 2026-10-18 description compacted to one line; original trigger text moved to "## When to use (triggers)" in the body; STE gate passed.
+- 2026-11-06 trigger text restored to the one-line `description` (routing reads only the description); the duplicate "## When to use (triggers)" body section removed.
