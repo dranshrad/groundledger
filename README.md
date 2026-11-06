@@ -94,6 +94,7 @@ python3 evals/check.py evals/cases/EV-001-invented-benchmark.md evals/replies/EV
 | `paid-cast` | Paid audit; observe-only until MutationLatch is open |
 | `studio-desk` | Workspace ops; Ship Gate refuses `blocked` ledger rows |
 | `cue-deck` | Reusable prompt cards |
+| `signal-os` | 6-pass pipeline for software and AI articles; routes to the other skills, adds technical review and adversarial critique |
 
 **The primitives.** Domain-neutral copies in [`primitives/`](primitives/): [grounding-law](primitives/grounding-law.md), [falsifiability-contract](primitives/falsifiability-contract.md) (every recommendation needs an Overturn field), [write-gate](primitives/write-gate.md) (irreversible actions default closed). They define a **blocking state** — `blocked`, missing Overturn, gate `closed` — rather than asking the model to be careful.
 
@@ -142,7 +143,7 @@ Restart the agent client if the skills do not appear. Then give it a content, SE
 
 **Writes.** MutationLatch / write-gate defaults closed. Allowed: read, draft, mark `DRAFT — NOT APPLIED`. Forbidden: executing the change, and narrating it. Open only with numeric ceilings (or the user typing `unlimited`), expiry, idempotency key, rollback, and approval of that draft.
 
-**Skill tree (`validate.py`).** Every skill has `SKILL.md`. Frontmatter includes `name`, `description`, `license`, `compatibility`. `name` equals the directory name. `SKILL.md` is at most 500 lines. No `skills/<name>/` paths inside skill files (those break after install). Every skill reaches the Grounding Law via a sibling-relative path. Relative markdown links resolve in the repo and in a copied-flat tree. The router names every other skill. No residual `Clearcast` branding inside shipped skills.
+**Skill tree (`validate.py`).** Every skill has `SKILL.md`. Frontmatter is valid YAML (PyYAML in CI; a line-parser fallback without it) and includes `name`, `description`, `license`, `compatibility`. `name` equals the directory name, matches `^[a-z0-9-]+$` and is at most 64 characters. `description` is at most 1024 characters with no `<` or `>`. `SKILL.md` is at most 500 lines. No `skills/<name>/` paths inside skill files (those break after install). Every skill reaches the Grounding Law via a sibling-relative path. Relative markdown links resolve in the repo and in a copied-flat tree. The router links every other skill as `../<name>/SKILL.md`. `llms.txt` and `docs/llms.txt` are identical. No residual `Clearcast` branding inside shipped skills.
 
 **Eval fixtures (`evals/check.py --lint`).** Each case has Prompt, Must contain, Must not contain, Rationale; a `skill:` line; a non-empty prompt; at least one assertion; valid regexes.
 

@@ -28,6 +28,11 @@ ROOT = Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 
 REQUIRED_FRONTMATTER = ("name", "description", "license", "compatibility")
+# Agent Skills spec limits: a name the loader rejects, or a description it
+# truncates, fails silently on the user's machine.
+NAME_RE = re.compile(r"^[a-z0-9-]+$")
+MAX_NAME = 64
+MAX_DESCRIPTION = 1024
 MAX_SKILL_LINES = 500  # AGENTS.md: depth belongs in references/
 GROUNDING = "blog-engine/references/grounding.md"
 
@@ -43,21 +48,50 @@ def warn(msg: str) -> None:
     warnings.append(msg)
 
 
-def frontmatter(text: str) -> dict[str, str]:
+try:
+    import yaml  # PyYAML; CI installs it. Without it, a weaker fallback runs.
+except ImportError:  # pragma: no cover - depends on the environment
+    yaml = None
+
+
+def _fallback_frontmatter(block: str) -> dict[str, str]:
+    """Line parser for when PyYAML is absent. Handles quoted scalars and
+    folded/literal block indicators; it cannot prove the block is valid YAML."""
+    out: dict[str, str] = {}
+    key = None
+    for line in block.splitlines():
+        m = re.match(r"^([a-z_]+):\s*(.*)$", line)
+        if m:
+            key, val = m.group(1), m.group(2).strip()
+            if re.fullmatch(r"[>|][+-]?", val):
+                val = ""
+            elif len(val) >= 2 and val[0] == val[-1] and val[0] in "'\"":
+                val = val[1:-1].replace("''", "'") if val[0] == "'" else val[1:-1]
+            out[key] = val
+        elif key and line.strip():
+            out[key] = (out[key] + " " + line.strip()).strip()
+    return out
+
+
+def frontmatter(text: str, label: str = "") -> dict[str, str] | None:
+    """Parsed frontmatter, {} if absent, None if it is not valid YAML (error logged)."""
     if not text.startswith("---"):
         return {}
     end = text.find("\n---", 3)
     if end == -1:
         return {}
-    block, out, key = text[3:end], {}, None
-    for line in block.splitlines():
-        m = re.match(r"^([a-z_]+):\s*(.*)$", line)
-        if m:
-            key = m.group(1)
-            out[key] = m.group(2).strip()
-        elif key and line.strip():
-            out[key] += " " + line.strip()
-    return out
+    block = text[3:end]
+    if yaml is None:
+        return _fallback_frontmatter(block)
+    try:
+        data = yaml.safe_load(block)
+    except yaml.YAMLError as e:
+        err(f"{label}: frontmatter is not valid YAML ({str(e).splitlines()[0]})")
+        return None
+    if not isinstance(data, dict):
+        err(f"{label}: frontmatter is not a YAML mapping")
+        return None
+    return {str(k): ("" if v is None else str(v)) for k, v in data.items()}
 
 
 def main() -> int:
@@ -77,7 +111,9 @@ def main() -> int:
             continue
 
         text = sk.read_text()
-        fm = frontmatter(text)
+        fm = frontmatter(text, d.name)
+        if fm is None:
+            continue  # invalid YAML already reported; field checks would only add noise
 
         # 2 — frontmatter completeness
         for field in REQUIRED_FRONTMATTER:
@@ -85,8 +121,20 @@ def main() -> int:
                 err(f"{d.name}: frontmatter missing `{field}:`")
 
         # 3 — name must equal directory name (AGENTS.md), or routing breaks
-        if fm.get("name") and fm["name"] != d.name:
-            err(f"{d.name}: frontmatter name `{fm['name']}` != directory `{d.name}`")
+        name = fm.get("name", "")
+        if name and name != d.name:
+            err(f"{d.name}: frontmatter name `{name}` != directory `{d.name}`")
+        if name and (not NAME_RE.match(name) or len(name) > MAX_NAME):
+            err(f"{d.name}: name `{name}` must match ^[a-z0-9-]+$ and be <= {MAX_NAME} chars")
+
+        # 3b — description limits (Agent Skills spec)
+        desc = fm.get("description", "")
+        if "description" in fm and not desc.strip():
+            err(f"{d.name}: description is empty")
+        if len(desc) > MAX_DESCRIPTION:
+            err(f"{d.name}: description is {len(desc)} chars (cap {MAX_DESCRIPTION})")
+        if "<" in desc or ">" in desc:
+            err(f"{d.name}: description contains `<` or `>`")
 
         # 4 — context budget
         n = len(text.splitlines())
@@ -149,9 +197,21 @@ def main() -> int:
     router = SKILLS / "groundledger" / "SKILL.md"
     if router.exists():
         rt = router.read_text()
-        for name in names - {"groundledger"}:
-            if name not in rt:
-                err(f"router: does not route to `{name}`")
+        for name in sorted(names - {"groundledger"}):
+            # a bare substring test passes for any name the router merely mentions
+            if f"../{name}/SKILL.md" not in rt:
+                err(f"router: does not route to `{name}` (no `../{name}/SKILL.md`)")
+
+    # 11 — the two llms.txt copies (repo root and the Pages site) must not drift
+    llms, docs_llms = ROOT / "llms.txt", ROOT / "docs" / "llms.txt"
+    if llms.exists() and docs_llms.exists():
+        if llms.read_bytes() != docs_llms.read_bytes():
+            err("llms.txt and docs/llms.txt differ — keep them identical")
+    else:
+        err("llms.txt or docs/llms.txt is missing")
+
+    if yaml is None:
+        warn("PyYAML not installed — frontmatter checked by the fallback line parser, not a YAML parser")
 
     return report()
 
