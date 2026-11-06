@@ -1,44 +1,41 @@
 # Groundledger
 
-> Agent skills for Claude Code, Cursor, and Cowork: CLEAR blog publishing, SPARK editorial, SNAP/PULSE social casting, ORBIT discovery, PROBE site SEO, SAFE paid media, Studio Desk, Cue Deck. Grounded writing — no fabricated statistics. Paid observe-only by default.
+> MIT agent skills for Claude Code, Cursor, and Cowork: CLEAR blog publishing, SPARK editorial, SNAP/PULSE social casting, ORBIT discovery, PROBE site SEO, SAFE paid media (observe-only by default), Studio Desk, Cue Deck, and Signal Over Noise OS (a 6-pass pipeline for software and AI articles). Grounded writing — no fabricated statistics.
 
 Formerly Clearcast; renamed to Groundledger. Not affiliated with Clearcast UK or other ClearCast apps.
 
-MIT License. https://github.com/dranshrad/groundledger
-Docs: https://dranshrad.github.io/groundledger/
-Brand: https://dranshrad.github.io/groundledger/brand.md
-
-
-## Grounding
-
-- https://github.com/dranshrad/groundledger/blob/master/skills/blog-engine/references/grounding.md
+- Code: https://github.com/dranshrad/groundledger
+- Docs: https://dranshrad.github.io/groundledger/
+- Brand card: https://dranshrad.github.io/groundledger/brand.md
+- Grounding Law: https://github.com/dranshrad/groundledger/blob/master/skills/blog-engine/references/grounding.md
 
 ## Primitives (domain-neutral, reusable outside content work)
 
-- primitives/grounding-law.md
-- primitives/falsifiability-contract.md
-- primitives/write-gate.md
+- https://github.com/dranshrad/groundledger/blob/master/primitives/grounding-law.md
+- https://github.com/dranshrad/groundledger/blob/master/primitives/falsifiability-contract.md
+- https://github.com/dranshrad/groundledger/blob/master/primitives/write-gate.md
 
 ## Skills
 
-- skills/groundledger/SKILL.md
-- skills/blog-engine/SKILL.md
-- skills/editorial-pass/SKILL.md
-- skills/social-cast/SKILL.md
-- skills/orbit-discovery/SKILL.md
-- skills/site-signal/SKILL.md
-- skills/paid-cast/SKILL.md
-- skills/studio-desk/SKILL.md
-- skills/cue-deck/SKILL.md
+- https://github.com/dranshrad/groundledger/tree/master/skills/groundledger
+- https://github.com/dranshrad/groundledger/tree/master/skills/blog-engine
+- https://github.com/dranshrad/groundledger/tree/master/skills/editorial-pass
+- https://github.com/dranshrad/groundledger/tree/master/skills/social-cast
+- https://github.com/dranshrad/groundledger/tree/master/skills/orbit-discovery
+- https://github.com/dranshrad/groundledger/tree/master/skills/site-signal
+- https://github.com/dranshrad/groundledger/tree/master/skills/paid-cast
+- https://github.com/dranshrad/groundledger/tree/master/skills/studio-desk
+- https://github.com/dranshrad/groundledger/tree/master/skills/cue-deck
+- https://github.com/dranshrad/groundledger/tree/master/skills/signal-os
 
-## Docs
+## Docs pages
 
 - https://dranshrad.github.io/groundledger/
 - https://dranshrad.github.io/groundledger/getting-started.md
 - https://dranshrad.github.io/groundledger/frameworks.md
-- https://dranshrad.github.io/groundledger/ECOSYSTEM.md
-- https://dranshrad.github.io/groundledger/COVERAGE.md
 - https://dranshrad.github.io/groundledger/faq.md
+- https://dranshrad.github.io/groundledger/COVERAGE.md
+- https://dranshrad.github.io/groundledger/ECOSYSTEM.md
 
 ## Sister repositories
 

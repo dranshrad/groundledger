@@ -154,7 +154,7 @@ users churn during onboarding — you know the one everyone cites. Make it punch
 
     <h2>How it works</h2>
     <p>The agent is told it may not present work as final while a material claim is unsupported, a ledger row is <code>blocked</code>, or a write gate is closed. The tools in this repo check that the skills still say that after install, and they can score a saved reply against a bait case. They do not sit on the model API.</p>
-    <p>Nine directories under <code>skills/</code>. Clients install them flat. Cross-skill links are sibling-relative so they resolve in the repo and after that flat copy.</p>
+    <p>Ten directories under <code>skills/</code> (nine skills plus <code>signal-os</code>, the 6-pass article conductor). Clients install them flat. Cross-skill links are sibling-relative so they resolve in the repo and after that flat copy.</p>
     <table>
       <thead><tr><th>Skill</th><th>What it is for</th></tr></thead>
       <tbody>
@@ -167,6 +167,7 @@ users churn during onboarding — you know the one everyone cites. Make it punch
         <tr><td><code>paid-cast</code></td><td>Paid audit; observe-only until MutationLatch is open</td></tr>
         <tr><td><code>studio-desk</code></td><td>Workspace ops; Ship Gate refuses <code>blocked</code> ledger rows</td></tr>
         <tr><td><code>cue-deck</code></td><td>Reusable prompt cards</td></tr>
+        <tr><td><code>signal-os</code></td><td>6-pass pipeline for software and AI articles; routes to the other skills, adds technical review and adversarial critique</td></tr>
       </tbody>
     </table>
     <p>The primitives are domain-neutral copies in <code>primitives/</code>: grounding-law, falsifiability-contract, write-gate. They define a blocking state — <code>blocked</code>, missing Overturn, gate <code>closed</code> — rather than asking the model to be careful. None of these intercept a live generation.</p>

@@ -1,6 +1,6 @@
 {
   "name": "groundledger",
-  "description": "Groundledger agent-skill suite for publish-ready blogging (CLEAR), site SEO (PROBE), paid media observe-only (SAFE), SPARK editorial, SNAP/PULSE social, ORBIT discovery, Studio Desk, and Cue Deck. Grounded writing with claim ledgers; no fabricated statistics; no live ad mutations without MutationLatch.",
+  "description": "Groundledger agent-skill suite for publish-ready blogging (CLEAR), site SEO (PROBE), paid media observe-only (SAFE), SPARK editorial, SNAP/PULSE social, ORBIT discovery, Studio Desk, Cue Deck, and Signal Over Noise OS (a 6-pass article pipeline for software and AI writing). Grounded writing with claim ledgers; no fabricated statistics; no live ad mutations without MutationLatch.",
   "version": "2.0.0",
   "author": {
     "name": "Divyansh Gupta",

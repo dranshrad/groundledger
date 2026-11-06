@@ -1,19 +1,19 @@
 # Groundledger
 
-> MIT agent skills for Claude Code, Cursor, and Cowork: CLEAR blog publishing, SPARK editorial, SNAP/PULSE social, ORBIT discovery, PROBE site SEO, SAFE paid media (observe-only by default). No fabricated statistics.
+> MIT agent skills for Claude Code, Cursor, and Cowork: CLEAR blog publishing, SPARK editorial, SNAP/PULSE social casting, ORBIT discovery, PROBE site SEO, SAFE paid media (observe-only by default), Studio Desk, Cue Deck, and Signal Over Noise OS (a 6-pass pipeline for software and AI articles). Grounded writing — no fabricated statistics.
+
+Formerly Clearcast; renamed to Groundledger. Not affiliated with Clearcast UK or other ClearCast apps.
 
 - Code: https://github.com/dranshrad/groundledger
 - Docs: https://dranshrad.github.io/groundledger/
 - Brand card: https://dranshrad.github.io/groundledger/brand.md
 - Grounding Law: https://github.com/dranshrad/groundledger/blob/master/skills/blog-engine/references/grounding.md
 
-Formerly Clearcast; renamed to Groundledger. Not affiliated with Clearcast UK or other ClearCast apps.
-
 ## Primitives (domain-neutral, reusable outside content work)
 
-- primitives/grounding-law.md
-- primitives/falsifiability-contract.md
-- primitives/write-gate.md
+- https://github.com/dranshrad/groundledger/blob/master/primitives/grounding-law.md
+- https://github.com/dranshrad/groundledger/blob/master/primitives/falsifiability-contract.md
+- https://github.com/dranshrad/groundledger/blob/master/primitives/write-gate.md
 
 ## Skills
 
@@ -26,6 +26,7 @@ Formerly Clearcast; renamed to Groundledger. Not affiliated with Clearcast UK or
 - https://github.com/dranshrad/groundledger/tree/master/skills/paid-cast
 - https://github.com/dranshrad/groundledger/tree/master/skills/studio-desk
 - https://github.com/dranshrad/groundledger/tree/master/skills/cue-deck
+- https://github.com/dranshrad/groundledger/tree/master/skills/signal-os
 
 ## Docs pages
 
@@ -35,3 +36,10 @@ Formerly Clearcast; renamed to Groundledger. Not affiliated with Clearcast UK or
 - https://dranshrad.github.io/groundledger/faq.md
 - https://dranshrad.github.io/groundledger/COVERAGE.md
 - https://dranshrad.github.io/groundledger/ECOSYSTEM.md
+
+## Sister repositories
+
+- https://github.com/dranshrad/voice-notes-to-anthropic-artifacts
+- https://github.com/dranshrad/llm-cst-refactorer
+- https://github.com/dranshrad/automated-self-correction-loop
+- https://github.com/dranshrad/anthropic-audio-gateway
