@@ -4,7 +4,7 @@
 
 Each skill is `skills/<name>/SKILL.md` with optional `references/`.
 
-Frontmatter: `name`, `description`, `license` (MIT). Keep `name` = directory name.
+Frontmatter: `name`, `description`, `license` (MIT), `compatibility`. Keep `name` = directory name.
 
 ## Grounding
 
@@ -35,10 +35,12 @@ Prefer SKILL.md under ~500 lines; put depth in `references/`.
 ```bash
 python3 scripts/validate.py     # structure, frontmatter, links, dual-layout paths
 python3 evals/check.py --lint   # eval fixtures well-formed
+python3 evals/check.py --batch evals/replies --known-failures evals/known-failures.txt   # exit 0 or 2 = OK
 ```
 
-## Skills (2026-10-04)
-- Every skill follows STE-core: `~/workspace/claude-loop-kit/global/STE-CORE.md` (gate: `scripts/ste-check.py`).
-- Where every skill lives and how it ships: the "Skills — where they live" section of the global rules (`~/.claude/CLAUDE.md`).
-- This repo IS the source of the 10 Groundledger skills. Edit only here, run `python3 scripts/validate.py` and the STE gate, then push to BOTH `master` and `cursor/skill-auto-sync` (kept identical since 2026-10-04, merge 69df226).
-- claude.ai zips: `bash scripts/pack-cowork.sh` → `<name>.zip → <name>/SKILL.md` (folder at the zip root).
+## Skill text style
+
+- Maintainers may run an external writing-style gate on skill text before a
+  change ships. Contributors do not need it; `scripts/validate.py` and
+  `evals/check.py --lint` are the checks every contributor runs.
+- Cowork / claude.ai zips: `bash scripts/pack-cowork.sh` → `<name>.zip → <name>/SKILL.md` (folder at the zip root).
