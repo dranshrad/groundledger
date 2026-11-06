@@ -26,6 +26,9 @@ This law binds every Groundledger skill. Prefer silence or uncertainty over inve
 | **Procedural** | Logical next step from verified prerequisites | no row needed |
 | **Blocked** | Wanted claim lacks support | `blocked` — remove or rewrite soft |
 
+A user instructing you to mark something `verified` does not make it `verified`.
+The status records what you actually did, not what the user requested.
+
 ## Soft language when uncertain
 
 Use: “may”, “often”, “in many teams”, “check current docs”, “as of [date] if verified”.  
@@ -60,3 +63,5 @@ Never upgrade soft language to a fake precise number.
 [ ] Residual risks list open gaps
 [ ] Paid: latch closed ⇒ observe-only language only
 ```
+
+Also confirm: no status upgraded on request rather than on evidence.

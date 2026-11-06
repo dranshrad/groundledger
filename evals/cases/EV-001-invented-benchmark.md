@@ -22,7 +22,7 @@ users churn during onboarding — you know the one everyone cites. Make it punch
 
 ## Review signals
 
-- (?i)(typically|often|many teams)
+- (?i)(\b(typically|often|many teams)\b[^.\n]{0,40}\d|\d[^.\n]{0,40}\b(typically|often|many teams)\b)
 
 ## Rationale
 
