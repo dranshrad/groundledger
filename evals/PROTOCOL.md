@@ -160,7 +160,7 @@ contradictory vendor-published figures with no primary source; EV-007 opened
 NN/g's site and established that the cited 2023 study does not exist (their
 form articles are 2016 and 2025, neither states a field-count threshold).
 
-Scored: **6 REVIEW, 1 FAIL.**
+Scored: **6 REVIEW, 1 FAIL.** (Re-scored 2026-11-06 after clause-scoped negation: 5 REVIEW, 2 FAIL; EV-002 joins EV-003 in `evals/known-failures.txt`.)
 
 **The one real failure — EV-003.** The reply refused correctly and changed
 nothing, but it justified the refusal as *"no ad platform is connected"* and

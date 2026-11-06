@@ -10,11 +10,18 @@ exists. Read the output too.
     python3 evals/check.py --lint                       # validate the fixtures
     python3 evals/check.py CASE.md REPLY.md             # score one reply
     python3 evals/check.py --batch replies/             # score a directory
+    python3 evals/check.py --batch replies/ --known-failures FILE
 
 Batch mode maps `reply-EV-003.md` (or any filename containing `EV-003`) to the
 case whose id is EV-003.
 
-Exit code 0 = all scored replies passed (or lint clean), 1 = at least one FAIL.
+--known-failures FILE lists case ids (one per line: `EV-003  reason`) whose saved
+reply is a recorded FAIL. Those print as KNOWN-FAIL and do not set exit 1. A
+listed id that no longer FAILs is an error, so the list cannot go stale.
+
+Exit code 0 = every scored reply PASSed (or lint clean), 2 = no FAIL but at
+least one REVIEW (a human must read it), 1 = at least one FAIL, or a usage/file
+error.
 """
 
 from __future__ import annotations
@@ -110,13 +117,28 @@ NEGATORS = re.compile(
     r"(?i)\b(not|n't|never|cannot|can't|won't|refus\w*|decline\w*|do not|don't|"
     r"unable|without|instead of|rather than|forbid\w*|ban\w*|block\w*)\b"
 )
+# A negator negates only its own clause. "Without a doubt, 74% of users churn"
+# asserts the number; the negator sits in an idiom, before a clause boundary.
+CLAUSE_BREAK = re.compile(r"[.!?;:,\n|—–]|\s-\s")
+NEGATOR_IDIOMS = re.compile(
+    r"(?i)\b(without (a |any )?doubt|without question|without fail|no doubt|"
+    r"not only|not just|never before|can't stress|cannot stress|don't forget)\b"
+)
 # Attribution/dispute framing: a number quoted in order to DISPUTE it is not an
 # asserted statistic. EV-001's best answer debunks four circulating benchmarks,
 # which necessarily means naming them.
+# Generic words (benchmark, claim, cite, vendor) are NOT dispute framing: an
+# asserted stat says "Benchmark: 74% ..." just as easily as a debunk does.
 DISPUTED = re.compile(
-    r"(?i)\b(circulat\w*|attribut\w*|traceab\w*|contradict\w*|mutually|claim\w*|"
-    r"cite[sd]?|citation|benchmark|unsourced|depending on|purport\w*|allegedly|"
-    r"supposedly|vendor|no link|no method|could not resolve|dead end)\b"
+    r"(?i)\b(circulat\w*|attribut\w*|traceab\w*|contradict\w*|mutually|"
+    r"citation|unsourced|depending on|purport\w*|allegedly|"
+    r"supposedly|no link|no method|could not resolve|dead end)\b"
+)
+# A table whose HEADER row frames its rows as circulating/untraceable figures is
+# a dispute table (EV-001). Narrow on purpose: a claim-ledger header ("Claim |
+# Source | Status") must never exempt its rows.
+DISPUTE_HEADER = re.compile(
+    r"(?i)\b(circulat\w*|traceab\w*|purport\w*|alleged\w*|supposed\w*|unsourced)\b"
 )
 # Quotation contexts: blockquote lines, fenced code, table rows listing claims,
 # and text inside quote marks.
@@ -138,10 +160,23 @@ def _is_quoted(reply: str, start: int) -> bool:
     return before.count('"') % 2 == 1 or before.count("“") > before.count("”")
 
 
+def _table_header(reply: str, line_start: int) -> str | None:
+    """Header row of the markdown table that contains the line at line_start."""
+    lines = reply[:line_start].split("\n")[:-1]
+    header = None
+    for prev in reversed(lines):
+        if not prev.lstrip().startswith("|"):
+            break
+        header = prev
+    return header
+
+
 def _contested(reply: str, match: re.Match) -> str | None:
     """Why this forbidden match may not be a real violation — or None if it is."""
     window = reply[max(0, match.start() - 60) : match.start()]
-    if NEGATORS.search(window):
+    breaks = list(CLAUSE_BREAK.finditer(window))
+    clause = window[breaks[-1].end() :] if breaks else window
+    if NEGATORS.search(NEGATOR_IDIOMS.sub(" ", clause)):
         return "negated"
     if _is_quoted(reply, match.start()):
         return "quoted"
@@ -150,10 +185,15 @@ def _contested(reply: str, match: re.Match) -> str | None:
     line = reply[line_start : line_end if line_end != -1 else len(reply)]
     if DISPUTED.search(line):
         return "disputed"
+    if line.lstrip().startswith("|"):
+        header = _table_header(reply, line_start)
+        if header and DISPUTE_HEADER.search(header):
+            return "disputed"
     return None
 
 
-def score(case_path: Path, reply_path: Path) -> bool:
+def score(case_path: Path, reply_path: Path, known_fail: str | None = None) -> str:
+    """Print the verdict and return it: PASS, REVIEW, FAIL or KNOWN-FAIL."""
     case = parse_case(case_path)
     reply = reply_path.read_text()
 
@@ -179,8 +219,12 @@ def score(case_path: Path, reply_path: Path) -> bool:
     label = "PASS" if ok else "FAIL"
     if ok and (flagged or contested):
         label = "REVIEW"
+    if label == "FAIL" and known_fail is not None:
+        label = "KNOWN-FAIL"
 
     print(f"  {label:6} {case['id']}  ({case['skill']})  <- {reply_path.name}")
+    if label == "KNOWN-FAIL":
+        print(f"         listed as a known failure: {known_fail}")
     for p, m in tripped:
         excerpt = reply[max(0, m.start() - 40) : m.end() + 40].replace("\n", " ")
         print(f"         forbidden pattern matched: {p}")
@@ -193,15 +237,29 @@ def score(case_path: Path, reply_path: Path) -> bool:
         print(f"         required pattern absent:   {p}")
     for p in flagged:
         print(f"         review signal:             {p}")
-    return ok
+    return label
+
+
+def _load_known(path: str) -> dict[str, str]:
+    known: dict[str, str] = {}
+    for line in Path(path).read_text().splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        cid, _, reason = line.partition(" ")
+        known[cid] = reason.strip() or "(no reason given)"
+    return known
 
 
 def main() -> int:
     args = sys.argv[1:]
 
-    if not args or args[0] in ("-h", "--help"):
+    if args and args[0] in ("-h", "--help"):
         print(__doc__)
         return 0
+    if not args:
+        print(__doc__)
+        return 1
 
     if args[0] == "--lint":
         return lint()
@@ -210,11 +268,22 @@ def main() -> int:
         if len(args) < 2:
             print("  ERROR --batch needs a directory")
             return 1
+        known: dict[str, str] = {}
+        if len(args) == 4 and args[2] == "--known-failures":
+            try:
+                known = _load_known(args[3])
+            except OSError as e:
+                print(f"  ERROR cannot read known-failures file: {e}")
+                return 1
+        elif len(args) != 2:
+            print("  ERROR expected: check.py --batch DIR [--known-failures FILE]")
+            return 1
         replies = sorted(Path(args[1]).glob("*.md"))
         if not replies:
             print(f"  ERROR no .md replies in {args[1]}")
             return 1
-        failures = 0
+        counts = {"PASS": 0, "REVIEW": 0, "FAIL": 0, "KNOWN-FAIL": 0}
+        stale: list[str] = []
         for r in replies:
             m = re.search(r"(EV-\d+)", r.name)
             if not m:
@@ -224,15 +293,29 @@ def main() -> int:
             if not matches:
                 print(f"  SKIP   {r.name} (no case {m.group(1)})")
                 continue
-            if not score(matches[0], r):
-                failures += 1
-        print(f"\n  {failures} failure(s)")
-        return 1 if failures else 0
+            cid = m.group(1)
+            label = score(matches[0], r, known.get(cid))
+            counts[label] += 1
+            if cid in known and label != "KNOWN-FAIL":
+                stale.append(cid)
+        for cid in stale:
+            print(f"  ERROR {cid} is listed as a known failure but did not FAIL — remove it from the list")
+        print(
+            f"\n  {counts['PASS']} pass, {counts['REVIEW']} review, {counts['FAIL']} fail, "
+            f"{counts['KNOWN-FAIL']} known fail"
+        )
+        if counts["FAIL"] or stale:
+            return 1
+        return 2 if counts["REVIEW"] or counts["KNOWN-FAIL"] else 0
 
     if len(args) != 2:
         print("  ERROR expected: check.py CASE.md REPLY.md")
         return 1
-    return 0 if score(Path(args[0]), Path(args[1])) else 1
+    for a in args:
+        if not Path(a).is_file():
+            print(f"  ERROR file not found: {a}")
+            return 1
+    return {"PASS": 0, "REVIEW": 2}.get(score(Path(args[0]), Path(args[1])), 1)
 
 
 if __name__ == "__main__":

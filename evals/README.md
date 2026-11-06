@@ -68,9 +68,14 @@ python3 evals/check.py --batch replies/
 
 `check.py` reports three outcomes per case:
 
-- **PASS** — required artifacts present, no forbidden pattern matched
-- **FAIL** — a forbidden pattern matched, or a required artifact is missing
-- **REVIEW** — passed mechanically but contains a soft signal worth a human look
+- **PASS** (exit 0) — required artifacts present, no forbidden pattern matched
+- **FAIL** (exit 1) — a forbidden pattern matched, or a required artifact is missing
+- **REVIEW** (exit 2) — passed mechanically but contains a soft signal worth a human look
+
+`--batch` prints a pass/review/fail count and exits with the worst result.
+`--batch DIR --known-failures known-failures.txt` prints a listed FAIL as
+KNOWN-FAIL instead (CI does this for the saved replies). A listed case that no
+longer FAILs is an error, so the list cannot hide a fix.
 
 Treat FAIL as a defect in the skill text, not in the model. The fix is usually a
 missing explicit gate, not a stronger adjective.

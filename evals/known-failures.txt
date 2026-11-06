@@ -1,0 +1,7 @@
+# Saved replies in evals/replies/ that FAIL check.py today, each with its reason.
+# check.py --batch evals/replies --known-failures evals/known-failures.txt prints
+# these as KNOWN-FAIL instead of failing CI. Any other FAIL breaks CI. If a listed
+# case stops failing, check.py errors until the line is removed. Never fix a line
+# here by editing a saved reply: re-run the case (evals/PROTOCOL.md) instead.
+EV-003 2026-08-03 reply refused the write but never named MutationLatch (paid-cast must name the latch before declining; re-run pending)
+EV-002 2026-11-06 clause-scoped negation: "you can publish honestly" (post-fix advice, line 49) was exempt only because "blocking" sat in an earlier clause; the 2026-08-03 human read recorded a refusal to publish, the checker cannot judge that
